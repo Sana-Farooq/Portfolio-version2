@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sana Farooq — Full Stack Developer</title>
+  <link href="/src/output.css" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            base: '#080810',
+            surface: '#0e0e1a',
+            card: '#131325',
+            cyan: '#00d9ff',
+            'cyan-dim': 'rgba(0,217,255,0.1)',
+            'cyan-mid': 'rgba(0,217,255,0.35)',
+          },
+          fontFamily: {
+            display: ['Syne', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+            body: ['"DM Sans"', 'sans-serif'],
+          },
+          animation: {
+            pulse2: 'pulse2 2s infinite',
+            fadeUp: 'fadeUp 0.7s ease forwards',
+            growBar: 'growBar 1.4s ease forwards',
+          },
+          keyframes: {
+            pulse2: {
+              '0%,100%': { opacity: 1, transform: 'scale(1)' },
+              '50%': { opacity: 0.4, transform: 'scale(0.75)' },
+            },
+            fadeUp: {
+              from: { opacity: 0, transform: 'translateY(24px)' },
+              to: { opacity: 1, transform: 'translateY(0)' },
+            },
+            growBar: {
+              from: { width: '0%' },
+              to: { width: 'var(--bar-w)' },
+            },
+          },
+        },
+      },
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap"
+    rel="stylesheet" />
+  <style>
+    body {
+      background: #080810;
+      color: #e8eef5;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .grid-bg {
+      background-image: linear-gradient(rgba(0, 217, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 217, 255, 0.025) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    .cyan-glow {
+      box-shadow: 0 0 40px rgba(0, 217, 255, 0.08);
+    }
+
+    .bar-fill {
+      height: 3px;
+      background: #00d9ff;
+      border-radius: 9999px;
+      transition: width 1.4s ease;
+    }
+
+    .card-hover {
+      transition: transform 0.25s, border-color 0.25s;
+    }
+
+    .card-hover:hover {
+      transform: translateY(-6px);
+      border-color: rgba(0, 217, 255, 0.35) !important;
+    }
+
+    .top-line::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: #00d9ff;
+      transform: scaleX(0);
+      transition: transform 0.3s;
+    }
+
+    .top-line:hover::before {
+      transform: scaleX(1);
+    }
+
+    .nav-link {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: 0.05em;
+      transition: color 0.2s;
+      text-decoration: none;
+
+    }
+
+    .nav-link:hover {
+      color: #00d9ff;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: #00d9ff;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .tag::before {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 1px;
+      background: #00d9ff;
+    }
+
+    .tech-pill {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: #00d9ff;
+      background: rgba(0, 217, 255, 0.1);
+      border: 1px solid rgba(0, 217, 255, 0.25);
+      padding: 4px 12px;
+      border-radius: 9999px;
+    }
+
+    .filter-btn {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      border: 1px solid rgba(0, 217, 255, 0.12);
+      color: #7a8a9a;
+      background: transparent;
+      padding: 7px 18px;
+      border-radius: 9999px;
+      cursor: pointer;
+      transition: all 0.2s;
+      letter-spacing: 0.04em;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: rgba(0, 217, 255, 0.1);
+      border-color: rgba(0, 217, 255, 0.35);
+      color: #00d9ff;
+    }
+
+    .hidden-project {
+      display: none !important;
+    }
+
+    .btn-primary {
+      background: #00d9ff;
+      color: #080810;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 13px 28px;
+      border-radius: 5px;
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: opacity 0.2s, transform 0.15s;
+    }
+
+    .btn-primary:hover {
+      opacity: 0.85;
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      border: 1px solid rgba(0, 217, 255, 0.35);
+      color: #e8eef5;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      padding: 13px 28px;
+      border-radius: 5px;
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+
+    .btn-outline:hover {
+      border-color: #00d9ff;
+      color: #00d9ff;
+      transform: translateY(-2px);
+    }
+
+    .process-line {
+      position: absolute;
+      top: 26px;
+      left: 10%;
+      right: 10%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(0, 217, 255, 0.3), rgba(0, 217, 255, 0.3), transparent);
+    }
+
+    input[type=text],
+    input[type=email],
+    textarea {
+      background: #131325;
+      border: 1px solid rgba(0, 217, 255, 0.12);
+      color: #e8eef5;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      padding: 12px 16px;
+      border-radius: 8px;
+      width: 100%;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: rgba(0, 217, 255, 0.45);
+    }
+
+    ::placeholder {
+      color: #3a4a5a;
+    }
+
+    @keyframes blink {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body class="grid-bg overflow-x-hidden">
+
+  <!-- ══════════════ NAV ══════════════ -->
+  <nav
+    class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-[6vw] py-5 backdrop-blur-xl border-b border-[rgba(0,217,255,0.08)]"
+    style="background:rgba(8,8,16,0.88)">
+    <a href="#hero" class="font-display font-extrabold text-xl text-cyan tracking-tight">SF.</a>
+    <ul class="hidden md:flex gap-9 list-none">
+      <li><a href="#about" class="nav-link">about</a></li>
+      <li><a href="#projects" class="nav-link">projects</a></li>
+      <li><a href="#skills" class="nav-link">skills</a></li>
+      <li><a href="#services" class="nav-link">services</a></li>
+      <li><a href="#contact" class="nav-link">contact</a></li>
+    </ul>
+    <a href="#contact"
+      class="nav-link border border-[rgba(0,217,255,0.35)] text-cyan px-5 py-2 rounded hover:bg-[rgba(0,217,255,0.1)] transition-colors">hire
+      me</a>
+  </nav>
+
+  <!-- ══════════════ HERO ══════════════ -->
+  <section id="hero" class="min-h-screen grid grid-cols-1 lg:grid-cols-2 gap-12 items-center px-[6vw] pt-32 pb-20">
+
+    <!-- Left -->
+    <div class="max-w-xl animate-fadeUp">
+      <div
+        class="inline-flex items-center gap-2 font-mono text-xs text-cyan tracking-widest bg-[rgba(0,217,255,0.08)] border border-[rgba(0,217,255,0.2)] px-4 py-2 rounded-full mb-7">
+        <span class="w-2 h-2 rounded-full bg-cyan animate-pulse2"></span>
+        Available for work
+      </div>
+      <h1 class="font-display font-extrabold text-6xl  mb-2">
+        Hi, I'm <span style="color:#00d9ff">Sana</span></h1>
+      <h4 class="font-display font-bold text-4xl mb-2">I'm a
+        <span style="color:#00d9ff" id="typed-role"></span>
+        <span id="typed-cursor" style="color:#00d9ff; animation: blink 0.75s step-end infinite;">|</span>
+      </h4>
+      <p class="text-white leading-relaxed max-w-md mb-10">
+        I build performant, scalable web applications — from pixel-perfect UIs to robust backend systems. Turning
+        complex problems into clean, elegant code.
+      </p>
+      <div class="flex gap-4 flex-wrap">
+        <a href="#projects" class="btn-primary font-bold">View My Work →</a>
+        <a href="#contact" class="btn-outline">Get In Touch</a>
+      </div>
+      <!-- <div class="flex gap-10 mt-14 pt-10 border-t border-[rgba(0,217,255,0.1)]">
+        <div>
+          <p class="font-display font-extrabold text-4xl text-cyan leading-none">5+</p>
+          <p class="font-mono text-xs text-[#7a8a9a] mt-1">Years Exp.</p>
+        </div>
+        <div>
+          <p class="font-display font-extrabold text-4xl text-cyan leading-none">48</p>
+          <p class="font-mono text-xs text-[#7a8a9a] mt-1">Projects Done</p>
+        </div>
+        <div>
+          <p class="font-display font-extrabold text-4xl text-cyan leading-none">30+</p>
+          <p class="font-mono text-xs text-[#7a8a9a] mt-1">Happy Clients</p>
+        </div>
+      </div> -->
+    </div>
+
+    <!-- Right — image side -->
+    <div class="flex justify-center items-center relative mt-10 lg:mt-0">
+      <img class="rounded-2xl w-100 h-100" src="/images/my-pic.png" alt="">
+    </div>
+  </section>
+
+  <!-- ══════════════ ABOUT ══════════════ -->
+  <section id="about" class="px-[6vw] py-28 bg-surface border-t border-b border-[rgba(0,217,255,0.08)]">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center max-w-6xl mx-auto">
+      <!-- Left -->
+      <div>
+        <span class="tag">About Me</span>
+        <h2 class="font-display font-bold text-4xl lg:text-5xl tracking-tight leading-tight">Crafting digital <span
+            class="text-cyan">experiences</span> that matter</h2>
+        <p class="text-[#7a8a9a] mt-5 leading-relaxed text-[15.5px]">
+          I'm a full-stack developer with 1+ years of experience building everything from SaaS platforms to real-time
+          APIs. I care deeply about performance, clean architecture, and the user experience.
+        </p>
+        <p class="text-[#7a8a9a] mt-4 leading-relaxed text-[15.5px]">
+          When I'm not coding, I'm exploring new tech, contributing to open-source, or designing systems that scale. I
+          believe the best code is invisible — it just works.
+        </p>
+        <div class="flex flex-wrap gap-2 mt-7">
+          <span class="tech-pill">React</span>
+          <span class="tech-pill">JavaScript</span>
+          <span class="tech-pill">Tailwind CSS</span>
+          <span class="tech-pill">HTML5</span>
+          <span class="tech-pill">SQL</span>
+          <span class="tech-pill">PHP</span>
+          <span class="tech-pill">GitHub</span>
+          <span class="tech-pill">Vercel</span>
+        </div>
+      </div>
+      <!-- Right -->
+      <div class="grid grid-cols-2 gap-4">
+        <div
+          class="bg-card border border-[rgba(0,217,255,0.1)] rounded-xl p-6 hover:border-[rgba(0,217,255,0.3)] transition-colors">
+          <div class="text-2xl mb-3">⚡</div>
+          <p class="font-display font-semibold text-sm text-[#e8eef5] mb-2">Fast Delivery</p>
+          <p class="text-xs text-[#7a8a9a] leading-relaxed">Shipping production-ready features without cutting corners.
+          </p>
+        </div>
+        <div
+          class="bg-card border border-[rgba(0,217,255,0.1)] rounded-xl p-6 hover:border-[rgba(0,217,255,0.3)] transition-colors">
+          <div class="text-2xl mb-3">🏗️</div>
+          <p class="font-display font-semibold text-sm text-[#e8eef5] mb-2">Clean Architecture</p>
+          <p class="text-xs text-[#7a8a9a] leading-relaxed">Scalable, maintainable code built to last years, not months.
+          </p>
+        </div>
+        <div
+          class="bg-card border border-[rgba(0,217,255,0.1)] rounded-xl p-6 hover:border-[rgba(0,217,255,0.3)] transition-colors">
+          <div class="text-2xl mb-3">🎨</div>
+          <p class="font-display font-semibold text-sm text-[#e8eef5] mb-2">UI Polish</p>
+          <p class="text-xs text-[#7a8a9a] leading-relaxed">Pixel-perfect interfaces that delight every user.</p>
+        </div>
+        <div
+          class="bg-card border border-[rgba(0,217,255,0.1)] rounded-xl p-6 hover:border-[rgba(0,217,255,0.3)] transition-colors">
+          <div class="text-2xl mb-3">🔒</div>
+          <p class="font-display font-semibold text-sm text-[#e8eef5] mb-2">Secure & Reliable</p>
+          <p class="text-xs text-[#7a8a9a] leading-relaxed">Security-first mindset with 99.9% uptime standards.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+ <!-- ══════════════ PROJECTS ══════════════ -->
+<section id="projects" class="px-[6vw] py-28">
+  <div class="max-w-6xl mx-auto">
+    <span class="tag">My Work</span>
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
+      <h2 class="font-display font-bold text-4xl lg:text-5xl tracking-tight">Featured <span class="text-cyan">Projects</span></h2>
+      <p class="text-[#7a8a9a] text-sm max-w-xs">A selection of work across various industries and stacks.</p>
+    </div>
+
+    <!-- Filter buttons -->
+    <div class="flex gap-2 flex-wrap mb-10" id="filterBar">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="html">HTML/CSS</button>
+      <button class="filter-btn" data-filter="tailwindcss">Tailwind CSS</button>
+      <button class="filter-btn" data-filter="react">React</button>
+      <button class="filter-btn" data-filter="javascript">JavaScript</button>
+    </div>
+
+    <!-- Projects grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5" id="projectsGrid">
+
+      <!-- Project 1 — VartexSoft -->
+      <div class="project-card bg-surface border border-[rgba(0,217,255,0.1)] rounded-xl overflow-hidden card-hover relative" data-tags="html tailwindcss javascript">
+        <div class="h-44 border-b border-[rgba(0,217,255,0.1)] relative overflow-hidden">
+          <img src="https://your-image-url.com/vartexsoft.png" alt="VartexSoft preview" class="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105" />
+          <span class="absolute top-3 right-3 text-[10px] font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 px-2 py-0.5 rounded-full backdrop-blur-sm">● Live</span>
+        </div>
+        <div class="p-6">
+          <div class="flex gap-2 flex-wrap mb-3">
+            <span class="tech-pill text-[10px]">HTML</span>
+            <span class="tech-pill text-[10px]">Tailwind CSS</span>
+            <span class="tech-pill text-[10px]">JavaScript</span>
+            <span class="tech-pill text-[10px]">EmailJS</span>
+          </div>
+          <h3 class="font-display font-bold text-lg text-[#e8eef5] mb-2">VartexSoft</h3>
+          <p class="text-xs text-[#7a8a9a] leading-relaxed mb-5">A fully responsive client-facing website for a software house, featuring services, portfolio, and a live contact form powered by EmailJS.</p>
+          <div class="flex gap-4">
+            <a href="#" class="font-mono text-xs text-cyan flex items-center gap-1 hover:opacity-70 transition-opacity">↗ Live Demo</a>
+            <a href="#" class="font-mono text-xs text-[#7a8a9a] flex items-center gap-1 hover:opacity-70 transition-opacity">⌥ GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 2 — IlmeQuran Academy -->
+      <div class="project-card bg-surface border border-[rgba(0,217,255,0.1)] rounded-xl overflow-hidden card-hover relative" data-tags="html tailwindcss javascript">
+        <div class="h-44 border-b border-[rgba(0,217,255,0.1)] relative overflow-hidden">
+          <img src="https://your-image-url.com/ilmequran.png" alt="IlmeQuran Academy preview" class="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105" />
+          <span class="absolute top-3 right-3 text-[10px] font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 px-2 py-0.5 rounded-full backdrop-blur-sm">● Live</span>
+        </div>
+        <div class="p-6">
+          <div class="flex gap-2 flex-wrap mb-3">
+            <span class="tech-pill text-[10px]">HTML</span>
+            <span class="tech-pill text-[10px]">Tailwind CSS</span>
+            <span class="tech-pill text-[10px]">JavaScript</span>
+            <span class="tech-pill text-[10px]">EmailJS</span>
+          </div>
+          <h3 class="font-display font-bold text-lg text-[#e8eef5] mb-2">IlmeQuran Academy</h3>
+          <p class="text-xs text-[#7a8a9a] leading-relaxed mb-5">A responsive client-facing website for an online Quran learning academy with course listings, enrollment forms, and live email integration.</p>
+          <div class="flex gap-4">
+            <a href="#" class="font-mono text-xs text-cyan flex items-center gap-1 hover:opacity-70 transition-opacity">↗ Live Demo</a>
+            <a href="#" class="font-mono text-xs text-[#7a8a9a] flex items-center gap-1 hover:opacity-70 transition-opacity">⌥ GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 3 — Travel Sphere -->
+      <div class="project-card bg-surface border border-[rgba(0,217,255,0.1)] rounded-xl overflow-hidden card-hover relative" data-tags="html tailwindcss javascript">
+        <div class="h-44 border-b border-[rgba(0,217,255,0.1)] relative overflow-hidden">
+          <img src="https://your-image-url.com/travelsphere.png" alt="Travel Sphere preview" class="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105" />
+          <span class="absolute top-3 right-3 text-[10px] font-mono bg-violet-500/10 text-violet-400 border border-violet-500/30 px-2 py-0.5 rounded-full backdrop-blur-sm">▲ Vercel</span>
+        </div>
+        <div class="p-6">
+          <div class="flex gap-2 flex-wrap mb-3">
+            <span class="tech-pill text-[10px]">HTML</span>
+            <span class="tech-pill text-[10px]">Tailwind CSS</span>
+            <span class="tech-pill text-[10px]">JavaScript</span>
+          </div>
+          <h3 class="font-display font-bold text-lg text-[#e8eef5] mb-2">Travel Sphere</h3>
+          <p class="text-xs text-[#7a8a9a] leading-relaxed mb-5">A modern, fully responsive travel website showcasing destinations, tour packages, and travel guides with smooth UI interactions.</p>
+          <div class="flex gap-4">
+            <a href="#" class="font-mono text-xs text-cyan flex items-center gap-1 hover:opacity-70 transition-opacity">↗ Live Demo</a>
+            <a href="#" class="font-mono text-xs text-[#7a8a9a] flex items-center gap-1 hover:opacity-70 transition-opacity">⌥ GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 4 — Psychologist Website -->
+      <div class="project-card bg-surface border border-[rgba(0,217,255,0.1)] rounded-xl overflow-hidden card-hover relative" data-tags="html tailwindcss javascript">
+        <div class="h-44 border-b border-[rgba(0,217,255,0.1)] relative overflow-hidden">
+          <img src="https://your-image-url.com/psychologist.png" alt="Psychologist Website preview" class="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105" />
+          <span class="absolute top-3 right-3 text-[10px] font-mono bg-violet-500/10 text-violet-400 border border-violet-500/30 px-2 py-0.5 rounded-full backdrop-blur-sm">▲ Vercel</span>
+        </div>
+        <div class="p-6">
+          <div class="flex gap-2 flex-wrap mb-3">
+            <span class="tech-pill text-[10px]">HTML</span>
+            <span class="tech-pill text-[10px]">Tailwind CSS</span>
+            <span class="tech-pill text-[10px]">JavaScript</span>
+          </div>
+          <h3 class="font-display font-bold text-lg text-[#e8eef5] mb-2">Psychologist Website</h3>
+          <p class="text-xs text-[#7a8a9a] leading-relaxed mb-5">A calming, responsive personal website for a psychologist featuring services, session booking info, testimonials, and a contact section.</p>
+          <div class="flex gap-4">
+            <a href="#" class="font-mono text-xs text-cyan flex items-center gap-1 hover:opacity-70 transition-opacity">↗ Live Demo</a>
+            <a href="#" class="font-mono text-xs text-[#7a8a9a] flex items-center gap-1 hover:opacity-70 transition-opacity">⌥ GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 5 — CrowdVentures -->
+      <div class="project-card bg-surface border border-[rgba(0,217,255,0.1)] rounded-xl overflow-hidden card-hover relative" data-tags="html tailwindcss">
+        <div class="h-44 border-b border-[rgba(0,217,255,0.1)] relative overflow-hidden">
+          <img src="https://your-image-url.com/crowdventures.png" alt="CrowdVentures preview" class="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105" />
+          <span class="absolute top-3 right-3 text-[10px] font-mono bg-violet-500/10 text-violet-400 border border-violet-500/30 px-2 py-0.5 rounded-full backdrop-blur-sm">▲ Vercel</span>
+        </div>
+        <div class="p-6">
+          <div class="flex gap-2 flex-wrap mb-3">
+            <span class="tech-pill text-[10px]">HTML</span>
+            <span class="tech-pill text-[10px]">CSS</span>
+          </div>
+          <h3 class="font-display font-bold text-lg text-[#e8eef5] mb-2">CrowdVentures</h3>
+          <p class="text-xs text-[#7a8a9a] leading-relaxed mb-5">A responsive, modern client-facing multi-page website for CrowdVentures — a crowdfunding platform — built with clean HTML & CSS.</p>
+          <div class="flex gap-4">
+            <a href="#" class="font-mono text-xs text-cyan flex items-center gap-1 hover:opacity-70 transition-opacity">↗ Live Demo</a>
+            <a href="#" class="font-mono text-xs text-[#7a8a9a] flex items-center gap-1 hover:opacity-70 transition-opacity">⌥ GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 6 — TextUtils -->
+      <div class="project-card bg-surface border border-[rgba(0,217,255,0.1)] rounded-xl overflow-hidden card-hover relative" data-tags="react javascript">
+        <div class="h-44 border-b border-[rgba(0,217,255,0.1)] relative overflow-hidden">
+          <img src="https://your-image-url.com/textutils.png" alt="TextUtils preview" class="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105" />
+          <span class="absolute top-3 right-3 text-[10px] font-mono bg-violet-500/10 text-violet-400 border border-violet-500/30 px-2 py-0.5 rounded-full backdrop-blur-sm">▲ Vercel</span>
+        </div>
+        <div class="p-6">
+          <div class="flex gap-2 flex-wrap mb-3">
+            <span class="tech-pill text-[10px]">React</span>
+            <span class="tech-pill text-[10px]">JavaScript</span>
+          </div>
+          <h3 class="font-display font-bold text-lg text-[#e8eef5] mb-2">TextUtils</h3>
+          <p class="text-xs text-[#7a8a9a] leading-relaxed mb-5">A simple yet handy React text utility app — convert case, remove extra spaces, count words & characters, and more in real time.</p>
+          <div class="flex gap-4">
+            <a href="#" class="font-mono text-xs text-cyan flex items-center gap-1 hover:opacity-70 transition-opacity">↗ Live Demo</a>
+            <a href="#" class="font-mono text-xs text-[#7a8a9a] flex items-center gap-1 hover:opacity-70 transition-opacity">⌥ GitHub</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 7 — To-Do List -->
+      <div class="project-card bg-surface border border-[rgba(0,217,255,0.1)] rounded-xl overflow-hidden card-hover relative" data-tags="react javascript">
+        <div class="h-44 border-b border-[rgba(0,217,255,0.1)] relative overflow-hidden">
+          <img src="https://your-image-url.com/todolist.png" alt="To-Do List preview" class="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105" />
+          <span class="absolute top-3 right-3 text-[10px] font-mono bg-violet-500/10 text-violet-400 border border-violet-500/30 px-2 py-0.5 rounded-full backdrop-blur-sm">▲ Vercel</span>
+        </div>
+        <div class="p-6">
+          <div class="flex gap-2 flex-wrap mb-3">
+            <span class="tech-pill text-[10px]">React</span>
+            <span class="tech-pill text-[10px]">JavaScript</span>
+          </div>
+          <h3 class="font-display font-bold text-lg text-[#e8eef5] mb-2">To-Do List</h3>
+          <p class="text-xs text-[#7a8a9a] leading-relaxed mb-5">A clean React to-do application that lets users add, view, and delete daily tasks — built for simplicity and everyday productivity.</p>
+          <div class="flex gap-4">
+            <a href="#" class="font-mono text-xs text-cyan flex items-center gap-1 hover:opacity-70 transition-opacity">↗ Live Demo</a>
+            <a href="#" class="font-mono text-xs text-[#7a8a9a] flex items-center gap-1 hover:opacity-70 transition-opacity">⌥ GitHub</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+  <!-- ══════════════ SKILLS ══════════════ -->
+  <section section id="skills" class="px-[6vw] py-28 bg-surface border-t border-b border-[rgba(0,217,255,0.08)]">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-5 gap-16 items-start">
+      <!-- Left -->
+      <div class="lg:col-span-2">
+        <span class="tag">Expertise</span>
+        <h2 class="font-display font-bold text-4xl lg:text-5xl tracking-tight leading-tight">My <span
+            class="text-cyan">Skills</span></h2>
+        <p class="text-[#7a8a9a] text-[15px] leading-relaxed mt-5">
+          One year of experience building modern web applications with a strong focus on frontend development, creating
+          responsive and interactive user interfaces using current tools and best practices, along with practical
+          experience in full-stack development including backend logic, API integration, and database design.
+        </p>
+        <div class="mt-8 p-6 bg-card border border-[rgba(0,217,255,0.1)] rounded-xl">
+          <p class="font-mono text-xs text-cyan mb-4 uppercase tracking-widest">Current Focus</p>
+          <div class="flex flex-wrap gap-2">
+            <span class="tech-pill">Backened</span>
+            <span class="tech-pill">Laravel</span>
+            <span class="tech-pill">SQL</span>
+            <span class="tech-pill">PHP</span>
+          </div>
+        </div>
+      </div>
+      <!-- Right -->
+      <div class="lg:col-span-3 grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-2">
+
+        <div>
+          <p
+            class="font-mono text-xs text-cyan uppercase tracking-widest mb-4 pb-2 border-b border-[rgba(0,217,255,0.1)]">
+            Frontend</p>
+          <div class="space-y-4">
+            <div>
+              <div class="flex justify-between mb-1.5"><span class="font-mono text-xs text-[#e8eef5]">React</span><span
+                  class="font-mono text-xs text-cyan">80%</span></div>
+              <div class="h-0.75 bg-card rounded-full overflow-hidden">
+                <div class="bar-fill" style="--bar-w:95%; width:0" data-w="95%"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-1.5"><span class="font-mono text-xs text-[#e8eef5]">Tailwind
+                  CSS</span><span class="font-mono text-xs text-cyan">92%</span></div>
+              <div class="h-0.75 bg-card rounded-full overflow-hidden">
+                <div class="bar-fill" style="--bar-w:92%; width:0" data-w="92%"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-1.5"><span
+                  class="font-mono text-xs text-[#e8eef5]">JavaScript</span><span
+                  class="font-mono text-xs text-cyan">88%</span></div>
+              <div class="h-0.75 bg-card rounded-full overflow-hidden">
+                <div class="bar-fill" style="--bar-w:88%; width:0" data-w="90%"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-1.5"><span class="font-mono text-xs text-[#e8eef5]">HTML5</span><span
+                  class="font-mono text-xs text-cyan">96%</span></div>
+              <div class="h-0.75 bg-card rounded-full overflow-hidden">
+                <div class="bar-fill" style="--bar-w:96%; width:0" data-w="96%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <p
+            class="font-mono text-xs text-cyan uppercase tracking-widest mb-4 pb-2 border-b border-[rgba(0,217,255,0.1)]">
+            Backend</p>
+          <div class="space-y-4">
+            <div>
+              <div class="flex justify-between mb-1.5"><span
+                  class="font-mono text-xs text-[#e8eef5]">Laravel</span><span
+                  class="font-mono text-xs text-cyan">90%</span></div>
+              <div class="h-0.75 bg-card rounded-full overflow-hidden">
+                <div class="bar-fill" style="--bar-w:90%; width:0" data-w="90%"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-1.5"><span class="font-mono text-xs text-[#e8eef5]">SQL</span><span
+                  class="font-mono text-xs text-cyan">85%</span></div>
+              <div class="h-0.75 bg-card rounded-full overflow-hidden">
+                <div class="bar-fill" style="--bar-w:85%; width:0" data-w="85%"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between mb-1.5"><span class="font-mono text-xs text-[#e8eef5]">PHP</span><span
+                  class="font-mono text-xs text-cyan">87%</span></div>
+              <div class="h-0.75 bg-card rounded-full overflow-hidden">
+                <div class="bar-fill" style="--bar-w:87%; width:0" data-w="87%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ SERVICES ══════════════ -->
+<section id="services" class="px-[6vw] py-28">
+  <div class="max-w-6xl mx-auto">
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-14 gap-4">
+      <div>
+        <span class="tag">What I Offer</span>
+        <h2 class="font-display font-bold text-4xl lg:text-5xl tracking-tight">My <span class="text-cyan">Services</span></h2>
+      </div>
+      <p class="text-[#7a8a9a] text-sm max-w-xs">End-to-end frontend services tailored to your needs.</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-24">
+
+      <div class="bg-surface border border-[rgba(0,217,255,0.1)] rounded-xl p-7 card-hover top-line relative overflow-hidden">
+        <div class="w-12 h-12 rounded-xl bg-[rgba(0,217,255,0.1)] border border-[rgba(0,217,255,0.2)] flex items-center justify-center text-2xl mb-5">🖥️</div>
+        <h3 class="font-display font-bold text-lg text-[#e8eef5] mb-3">UI / Frontend Development</h3>
+        <p class="text-[13.5px] text-[#7a8a9a] leading-relaxed">Pixel-perfect, responsive interfaces built with HTML, Tailwind CSS, and JavaScript — fast to load and smooth on any device.</p>
+      </div>
+
+      <div class="bg-surface border border-[rgba(0,217,255,0.1)] rounded-xl p-7 card-hover top-line relative overflow-hidden">
+        <div class="w-12 h-12 rounded-xl bg-[rgba(0,217,255,0.1)] border border-[rgba(0,217,255,0.2)] flex items-center justify-center text-2xl mb-5">⚛️</div>
+        <h3 class="font-display font-bold text-lg text-[#e8eef5] mb-3">React Development</h3>
+        <p class="text-[13.5px] text-[#7a8a9a] leading-relaxed">Dynamic, component-driven web apps using React — reusable components, state management, and smooth user experiences.</p>
+      </div>
+
+      <div class="bg-surface border border-[rgba(0,217,255,0.1)] rounded-xl p-7 card-hover top-line relative overflow-hidden">
+        <div class="w-12 h-12 rounded-xl bg-[rgba(0,217,255,0.1)] border border-[rgba(0,217,255,0.2)] flex items-center justify-center text-2xl mb-5">🎨</div>
+        <h3 class="font-display font-bold text-lg text-[#e8eef5] mb-3">Landing Pages & Websites</h3>
+        <p class="text-[13.5px] text-[#7a8a9a] leading-relaxed">Clean, conversion-focused landing pages and portfolio sites — designed with Tailwind CSS and built for speed.</p>
+      </div>
+
+      <div class="bg-surface border border-[rgba(0,217,255,0.1)] rounded-xl p-7 card-hover top-line relative overflow-hidden">
+        <div class="w-12 h-12 rounded-xl bg-[rgba(0,217,255,0.1)] border border-[rgba(0,217,255,0.2)] flex items-center justify-center text-2xl mb-5">🔧</div>
+        <h3 class="font-display font-bold text-lg text-[#e8eef5] mb-3">UI Fixes & Improvements</h3>
+        <p class="text-[13.5px] text-[#7a8a9a] leading-relaxed">Got a broken layout or slow frontend? I'll debug, refactor, and improve your existing site's look, feel, and performance.</p>
+      </div>
+
+      <div class="bg-surface border border-[rgba(0,217,255,0.1)] rounded-xl p-7 card-hover top-line relative overflow-hidden">
+        <div class="w-12 h-12 rounded-xl bg-[rgba(0,217,255,0.1)] border border-[rgba(0,217,255,0.2)] flex items-center justify-center text-2xl mb-5">🚀</div>
+        <h3 class="font-display font-bold text-lg text-[#e8eef5] mb-3">Frontend to Fullstack</h3>
+        <p class="text-[13.5px] text-[#7a8a9a] leading-relaxed">Expanding into PHP, Laravel & SQL — I can connect your frontend to a backend, build simple APIs, and manage databases for small projects.</p>
+      </div>
+
+      <div class="bg-surface border border-[rgba(0,217,255,0.1)] rounded-xl p-7 card-hover top-line relative overflow-hidden">
+        <div class="w-12 h-12 rounded-xl bg-[rgba(0,217,255,0.1)] border border-[rgba(0,217,255,0.2)] flex items-center justify-center text-2xl mb-5">🤝</div>
+        <h3 class="font-display font-bold text-lg text-[#e8eef5] mb-3">Freelance Collaboration</h3>
+        <p class="text-[13.5px] text-[#7a8a9a] leading-relaxed">Need a reliable frontend dev for your project? Open to freelance work, short-term contracts, and long-term collaborations.</p>
+      </div>
+
+    </div>
+
+    <!-- Development Process (unchanged) -->
+    <div class="bg-surface border border-[rgba(0,217,255,0.08)] rounded-2xl p-10">
+      <h3 class="font-display font-bold text-2xl text-center text-[#e8eef5] mb-12">My Development Process</h3>
+      <div class="relative grid grid-cols-5 gap-0">
+        <div class="process-line"></div>
+        <div class="flex flex-col items-center text-center px-3 relative z-10">
+          <div class="w-13 h-13 rounded-full bg-card border border-[rgba(0,217,255,0.3)] flex items-center justify-center font-mono text-sm text-cyan mb-4">01</div>
+          <p class="font-display font-semibold text-[13px] text-[#e8eef5] mb-1.5">Discovery</p>
+          <p class="text-[11px] text-[#7a8a9a] leading-relaxed">Goals, scope &amp; requirements</p>
+        </div>
+        <div class="flex flex-col items-center text-center px-3 relative z-10">
+          <div class="w-13 h-13 rounded-full bg-card border border-[rgba(0,217,255,0.3)] flex items-center justify-center font-mono text-sm text-cyan mb-4">02</div>
+          <p class="font-display font-semibold text-[13px] text-[#e8eef5] mb-1.5">Design</p>
+          <p class="text-[11px] text-[#7a8a9a] leading-relaxed">Wireframes &amp; architecture</p>
+        </div>
+        <div class="flex flex-col items-center text-center px-3 relative z-10">
+          <div class="w-13 h-13 rounded-full bg-[rgba(0,217,255,0.12)] border border-cyan flex items-center justify-center font-mono text-sm text-cyan mb-4">03</div>
+          <p class="font-display font-semibold text-[13px] text-cyan mb-1.5">Build</p>
+          <p class="text-[11px] text-[#7a8a9a] leading-relaxed">Agile sprints &amp; reviews</p>
+        </div>
+        <div class="flex flex-col items-center text-center px-3 relative z-10">
+          <div class="w-13 h-13 rounded-full bg-card border border-[rgba(0,217,255,0.3)] flex items-center justify-center font-mono text-sm text-cyan mb-4">04</div>
+          <p class="font-display font-semibold text-[13px] text-[#e8eef5] mb-1.5">Test</p>
+          <p class="text-[11px] text-[#7a8a9a] leading-relaxed">QA, performance &amp; security</p>
+        </div>
+        <div class="flex flex-col items-center text-center px-3 relative z-10">
+          <div class="w-13 h-13 rounded-full bg-card border border-[rgba(0,217,255,0.3)] flex items-center justify-center font-mono text-sm text-cyan mb-4">05</div>
+          <p class="font-display font-semibold text-[13px] text-[#e8eef5] mb-1.5">Launch</p>
+          <p class="text-[11px] text-[#7a8a9a] leading-relaxed">Deploy &amp; ongoing support</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- ══════════════ CTA BAND ══════════════ -->
+  <div
+    class="relative py-20 px-[6vw] text-center bg-surface border-t border-b border-[rgba(0,217,255,0.08)] overflow-hidden">
+    <div
+      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-150 h-75 rounded-full pointer-events-none"
+      style="background:radial-gradient(ellipse,rgba(0,217,255,0.08) 0%,transparent 70%)"></div>
+    <p class="font-mono text-xs text-cyan tracking-widest uppercase mb-4 relative">Open to opportunities</p>
+    <h2 class="font-display font-extrabold text-4xl lg:text-6xl tracking-tight mb-5 relative">Got a <span
+        class="text-cyan">project</span> in mind?</h2>
+    <p class="text-[#7a8a9a] text-base mb-10 relative">Let's turn your idea into a polished, production-ready product.
+    </p>
+    <a href="#contact" class="btn-primary relative mx-auto">Start a Conversation →</a>
+  </div>
+
+  <!-- ══════════════ TESTIMONIALS ══════════════ -->
+  <section id="testimonials" class="px-[6vw] py-28">
+    <div class="max-w-6xl mx-auto">
+      <span class="tag">What Clients Say</span>
+      <h2 class="font-display font-bold text-4xl lg:text-5xl tracking-tight mb-12">Client <span
+          class="text-cyan">Testimonials</span></h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+
+        <div
+          class="bg-surface border border-[rgba(0,217,255,0.1)] rounded-xl p-7 hover:border-[rgba(0,217,255,0.25)] transition-colors">
+          <div class="flex gap-1 mb-4">
+            <span class="text-cyan text-sm">★★★★★</span>
+          </div>
+          <p class="text-sm text-[#7a8a9a] leading-relaxed mb-6 italic">"Alex rebuilt our entire platform in 3 months.
+            The code quality is exceptional and the site is blazing fast. Best investment we've made."</p>
+          <div class="flex items-center gap-3">
+            <div
+              class="w-10 h-10 rounded-full bg-[rgba(0,217,255,0.1)] border border-[rgba(0,217,255,0.25)] flex items-center justify-center font-display font-bold text-sm text-cyan shrink-0">
+              SM</div>
+            <div>
+              <p class="font-display font-semibold text-sm text-[#e8eef5]">Sarah Mitchell</p>
+              <p class="font-mono text-[11px] text-[#7a8a9a]">CTO, Launchpad SaaS</p>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="bg-surface border border-[rgba(0,217,255,0.1)] rounded-xl p-7 hover:border-[rgba(0,217,255,0.25)] transition-colors">
+          <div class="flex gap-1 mb-4">
+            <span class="text-cyan text-sm">★★★★★</span>
+          </div>
+          <p class="text-sm text-[#7a8a9a] leading-relaxed mb-6 italic">"Delivered a complex dashboard on time and on
+            budget. Alex communicates clearly and the attention to detail is unlike any freelancer I've worked with."
+          </p>
+          <div class="flex items-center gap-3">
+            <div
+              class="w-10 h-10 rounded-full bg-[rgba(0,217,255,0.1)] border border-[rgba(0,217,255,0.25)] flex items-center justify-center font-display font-bold text-sm text-cyan shrink-0">
+              JK</div>
+            <div>
+              <p class="font-display font-semibold text-sm text-[#e8eef5]">James Kim</p>
+              <p class="font-mono text-[11px] text-[#7a8a9a]">Founder, DataPulse</p>
+            </div>
+          </div>
+        </div>
+
+        <div
+          class="bg-surface border border-[rgba(0,217,255,0.1)] rounded-xl p-7 hover:border-[rgba(0,217,255,0.25)] transition-colors">
+          <div class="flex gap-1 mb-4">
+            <span class="text-cyan text-sm">★★★★★</span>
+          </div>
+          <p class="text-sm text-[#7a8a9a] leading-relaxed mb-6 italic">"Our e-commerce revenue doubled after Alex
+            rebuilt the frontend. The UI is stunning and the checkout conversion rate went up by 40%."</p>
+          <div class="flex items-center gap-3">
+            <div
+              class="w-10 h-10 rounded-full bg-[rgba(0,217,255,0.1)] border border-[rgba(0,217,255,0.25)] flex items-center justify-center font-display font-bold text-sm text-cyan shrink-0">
+              RP</div>
+            <div>
+              <p class="font-display font-semibold text-sm text-[#e8eef5]">Rachel Patel</p>
+              <p class="font-mono text-[11px] text-[#7a8a9a]">CEO, BrandKart</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ HAPPY CLIENTS CTA ══════════════ -->
+  <div
+    class="px-[6vw] py-16 bg-card border-t border-b border-[rgba(0,217,255,0.08)] flex flex-col lg:flex-row items-center justify-between gap-10">
+    <div>
+      <h2 class="font-display font-extrabold text-3xl lg:text-5xl tracking-tight leading-tight mb-2">
+        Join <span class="text-cyan">30+</span> happy clients<br />who ship faster.
+      </h2>
+      <p class="text-[#7a8a9a] text-sm">From MVPs to enterprise platforms — I've got you covered.</p>
+    </div>
+    <div class="flex gap-12 flex-wrap justify-center lg:justify-end">
+      <div class="text-center">
+        <p class="font-display font-extrabold text-5xl text-cyan leading-none">48</p>
+        <p class="font-mono text-xs text-[#7a8a9a] mt-1 uppercase tracking-wide">Projects</p>
+      </div>
+      <div class="text-center">
+        <p class="font-display font-extrabold text-5xl text-cyan leading-none">30+</p>
+        <p class="font-mono text-xs text-[#7a8a9a] mt-1 uppercase tracking-wide">Clients</p>
+      </div>
+      <div class="text-center">
+        <p class="font-display font-extrabold text-5xl text-cyan leading-none">5yr</p>
+        <p class="font-mono text-xs text-[#7a8a9a] mt-1 uppercase tracking-wide">Experience</p>
+      </div>
+      <div class="text-center">
+        <p class="font-display font-extrabold text-5xl text-cyan leading-none">100%</p>
+        <p class="font-mono text-xs text-[#7a8a9a] mt-1 uppercase tracking-wide">Satisfaction</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════ CONTACT ══════════════ -->
+  <section id="contact" class="px-[6vw] py-28">
+    <div class="max-w-6xl mx-auto">
+      <span class="tag">Get In Touch</span>
+      <h2 class="font-display font-bold text-4xl lg:text-5xl tracking-tight mb-3">Let's build something <span
+          class="text-cyan">together</span></h2>
+      <p class="text-[#7a8a9a] text-base mb-14 max-w-lg">Have a project in mind, need a developer, or just want to chat?
+        Drop me a message — I usually reply within 24 hours.</p>
+
+      <div class="grid grid-cols-1 lg:grid-cols-5 gap-16 items-start">
+        <!-- Contact info -->
+        <div class="lg:col-span-2 space-y-7">
+          <div class="flex items-start gap-4">
+            <div
+              class="w-11 h-11 rounded-xl bg-[rgba(0,217,255,0.08)] border border-[rgba(0,217,255,0.2)] flex items-center justify-center text-lg shrink-0 mt-1">
+              📧</div>
+            <div>
+              <p class="font-mono text-xs text-[#7a8a9a] uppercase tracking-widest mb-1">Email</p>
+              <p class="text-[15px] text-[#e8eef5] font-medium">sana</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div
+              class="w-11 h-11 rounded-xl bg-[rgba(0,217,255,0.08)] border border-[rgba(0,217,255,0.2)] flex items-center justify-center text-lg shrink-0 mt-1">
+              📍</div>
+            <div>
+              <p class="font-mono text-xs text-[#7a8a9a] uppercase tracking-widest mb-1">Location</p>
+              <p class="text-[15px] text-[#e8eef5] font-medium">Bahawalpur, Pakistan (Remote OK)</p>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div
+              class="w-11 h-11 rounded-xl bg-[rgba(0,217,255,0.08)] border border-[rgba(0,217,255,0.2)] flex items-center justify-center text-lg shrink-0 mt-1">
+              ⏰</div>
+            <div>
+              <p class="font-mono text-xs text-[#7a8a9a] uppercase tracking-widest mb-1">Availability</p>
+              <p class="text-[15px] text-[#e8eef5] font-medium">Open to freelance &amp; contracts</p>
+            </div>
+          </div>
+          <!-- Socials -->
+          <div>
+            <p class="font-mono text-xs text-[#7a8a9a] uppercase tracking-widest mb-4">Find me online</p>
+            <div class="flex gap-3 flex-wrap">
+              <a href="#"
+                class="w-11 h-11 border border-[rgba(0,217,255,0.12)] rounded-xl flex items-center justify-center text-lg hover:border-[rgba(0,217,255,0.35)] hover:bg-[rgba(0,217,255,0.08)] hover:-translate-y-1 transition-all">🐙</a>
+              <a href="#"
+                class="w-11 h-11 border border-[rgba(0,217,255,0.12)] rounded-xl flex items-center justify-center text-lg hover:border-[rgba(0,217,255,0.35)] hover:bg-[rgba(0,217,255,0.08)] hover:-translate-y-1 transition-all">💼</a>
+              <a href="#"
+                class="w-11 h-11 border border-[rgba(0,217,255,0.12)] rounded-xl flex items-center justify-center text-lg hover:border-[rgba(0,217,255,0.35)] hover:bg-[rgba(0,217,255,0.08)] hover:-translate-y-1 transition-all">🐦</a>
+              <a href="#"
+                class="w-11 h-11 border border-[rgba(0,217,255,0.12)] rounded-xl flex items-center justify-center text-lg hover:border-[rgba(0,217,255,0.35)] hover:bg-[rgba(0,217,255,0.08)] hover:-translate-y-1 transition-all">📝</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Form -->
+        <div class="lg:col-span-3 bg-surface border border-[rgba(0,217,255,0.1)] rounded-2xl p-8">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
+            <div>
+              <label class="font-mono text-xs text-[#7a8a9a] uppercase tracking-widest mb-2 block">Your Name</label>
+              <input type="text" placeholder="Sana" />
+            </div>
+            <div>
+              <label class="font-mono text-xs text-[#7a8a9a] uppercase tracking-widest mb-2 block">Email Address</label>
+              <input type="email" placeholder="sana@example.com" />
+            </div>
+          </div>
+          <div class="mb-5">
+            <label class="font-mono text-xs text-[#7a8a9a] uppercase tracking-widest mb-2 block">Subject</label>
+            <input type="text" placeholder="Project Inquiry" />
+          </div>
+          <div class="mb-7">
+            <label class="font-mono text-xs text-[#7a8a9a] uppercase tracking-widest mb-2 block">Message</label>
+            <textarea rows="5" placeholder="Tell me about your project..."></textarea>
+          </div>
+          <button class="btn-primary w-full justify-center text-sm"
+            onclick="this.textContent='Message Sent ✓'; this.style.background='#0a6375'; setTimeout(()=>{ this.textContent='Send Message →'; this.style.background=''; },3000)">
+            Send Message →
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ FOOTER ══════════════ -->
+  <footer
+    class="px-[6vw] py-10 border-t border-[rgba(0,217,255,0.08)] flex flex-col sm:flex-row items-center justify-between gap-4">
+    <a href="#hero" class="font-display font-extrabold text-xl text-cyan tracking-tight">SF.</a>
+    <p class="font-mono text-xs text-[#3a4a5a] text-center">© 2026 Sana Farooq — Built with js &amp; Tailwind CSS
+    </p>
+    <a href="#hero" class="font-mono text-xs text-[#7a8a9a] hover:text-cyan transition-colors">↑ back to top</a>
+  </footer>
+
+  <script>
+    // Filter projects
+    document.getElementById('filterBar').addEventListener('click', function (e) {
+      const btn = e.target.closest('.filter-btn');
+      if (!btn) return;
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      document.querySelectorAll('.project-card').forEach(card => {
+        const tags = card.dataset.tags || '';
+        if (filter === 'all' || tags.includes(filter)) {
+          card.style.display = '';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+
+    // Animate skill bars on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.querySelectorAll('.bar-fill').forEach(bar => {
+            const w = bar.dataset.w;
+            bar.style.width = w;
+          });
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    const skillsSection = document.getElementById('skills');
+    if (skillsSection) observer.observe(skillsSection);
+
+
+    const roles = [
+      "Frontend Dev.",
+      "Problem Solver.",
+      "Full Stack Dev.",
+      "UI Designer.",
+    ];
+
+    let roleIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    const el = document.getElementById('typed-role');
+
+    function type() {
+      const current = roles[roleIndex];
+
+      if (!isDeleting) {
+        el.textContent = current.slice(0, charIndex + 1);
+        charIndex++;
+        if (charIndex === current.length) {
+          // pause at end then start deleting
+          setTimeout(() => { isDeleting = true; type(); }, 1800);
+          return;
+        }
+      } else {
+        el.textContent = current.slice(0, charIndex - 1);
+        charIndex--;
+        if (charIndex === 0) {
+          isDeleting = false;
+          roleIndex = (roleIndex + 1) % roles.length;
+        }
+      }
+
+      const speed = isDeleting ? 50 : 90;
+      setTimeout(type, speed);
+    }
+
+    // start after a short delay
+    setTimeout(type, 600);
+  </script>
+</body>
+
+</html>
