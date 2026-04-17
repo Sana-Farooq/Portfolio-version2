@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sana Farooq — Full Stack Developer</title>
   <link href="/src/output.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -51,6 +52,8 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap"
     rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <link rel="icon" href="/images/favicon.svg">
   <style>
     body {
       background: #080810;
@@ -262,9 +265,9 @@
 
   <!-- ══════════════ NAV ══════════════ -->
   <nav
-    class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-[6vw] py-5 backdrop-blur-xl border-b border-[rgba(0,217,255,0.08)]"
+    class="h-20 fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-[6vw] py-5 backdrop-blur-xl border-b border-[rgba(0,217,255,0.08)]"
     style="background:rgba(8,8,16,0.88)">
-    <a href="#hero" class="font-display font-extrabold text-xl text-cyan tracking-tight">SF.</a>
+    <a href="#hero" class="flex items-center h-full"> <img class="h-full max-h-16 w-auto object-contain" src="/images/logo.svg" alt="SF."></a>
     <ul class="hidden md:flex gap-9 list-none">
       <li><a href="#about" class="nav-link">about</a></li>
       <li><a href="#projects" class="nav-link">projects</a></li>
@@ -298,7 +301,8 @@
         complex problems into clean, elegant code.
       </p>
       <div class="flex gap-4 flex-wrap">
-        <a href="#projects" class="btn-primary font-bold">View My Work →</a>
+        <a href="#projects" class="btn-primary font-bold">View My Work <span><i
+              class="fa-solid fa-arrow-right"></i></span> </a>
         <a href="#contact" class="btn-outline">Get In Touch</a>
       </div>
       <!-- <div class="flex gap-10 mt-14 pt-10 border-t border-[rgba(0,217,255,0.1)]">
@@ -354,27 +358,27 @@
       <div class="grid grid-cols-2 gap-4">
         <div
           class="bg-card border border-[rgba(0,217,255,0.1)] rounded-xl p-6 hover:border-[rgba(0,217,255,0.3)] transition-colors">
-          <div class="text-2xl mb-3">⚡</div>
+          <div class="text-2xl mb-3"><i class="fa-solid fa-bolt-lightning"></i></div>
           <p class="font-display font-semibold text-sm text-[#e8eef5] mb-2">Fast Delivery</p>
           <p class="text-xs text-[#7a8a9a] leading-relaxed">Shipping production-ready features without cutting corners.
           </p>
         </div>
         <div
           class="bg-card border border-[rgba(0,217,255,0.1)] rounded-xl p-6 hover:border-[rgba(0,217,255,0.3)] transition-colors">
-          <div class="text-2xl mb-3">🏗️</div>
+          <div class="text-2xl mb-3"><i class="fa-solid fa-sitemap"></i></div>
           <p class="font-display font-semibold text-sm text-[#e8eef5] mb-2">Clean Architecture</p>
           <p class="text-xs text-[#7a8a9a] leading-relaxed">Scalable, maintainable code built to last years, not months.
           </p>
         </div>
         <div
           class="bg-card border border-[rgba(0,217,255,0.1)] rounded-xl p-6 hover:border-[rgba(0,217,255,0.3)] transition-colors">
-          <div class="text-2xl mb-3">🎨</div>
+          <div class="text-2xl mb-3"><i class="fa-solid fa-palette"></i></div>
           <p class="font-display font-semibold text-sm text-[#e8eef5] mb-2">UI Polish</p>
           <p class="text-xs text-[#7a8a9a] leading-relaxed">Pixel-perfect interfaces that delight every user.</p>
         </div>
         <div
           class="bg-card border border-[rgba(0,217,255,0.1)] rounded-xl p-6 hover:border-[rgba(0,217,255,0.3)] transition-colors">
-          <div class="text-2xl mb-3">🔒</div>
+          <div class="text-2xl mb-3"><i class="fa-solid fa-lock"></i></div>
           <p class="font-display font-semibold text-sm text-[#e8eef5] mb-2">Secure & Reliable</p>
           <p class="text-xs text-[#7a8a9a] leading-relaxed">Security-first mindset with 99.9% uptime standards.</p>
         </div>
@@ -382,176 +386,294 @@
     </div>
   </section>
 
- <!-- ══════════════ PROJECTS ══════════════ -->
-<section id="projects" class="px-[6vw] py-28">
-  <div class="max-w-6xl mx-auto">
-    <span class="tag">My Work</span>
-    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
-      <h2 class="font-display font-bold text-4xl lg:text-5xl tracking-tight">Featured <span class="text-cyan">Projects</span></h2>
-      <p class="text-[#7a8a9a] text-sm max-w-xs">A selection of work across various industries and stacks.</p>
+  <!-- ══════════════ PROJECTS ══════════════ -->
+  <section id="projects" class="px-[6vw] py-28">
+    <div class="max-w-6xl mx-auto">
+      <span class="tag">My Work</span>
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
+        <h2 class="font-display font-bold text-4xl lg:text-5xl tracking-tight">Featured <span
+            class="text-cyan">Projects</span></h2>
+        <p class="text-[#7a8a9a] text-sm max-w-xs">A selection of work across various industries and stacks.</p>
+      </div>
+
+      <!-- Filter buttons -->
+      <div class="flex gap-2 flex-wrap mb-10" id="filterBar">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="html">HTML/CSS</button>
+        <button class="filter-btn" data-filter="tailwindcss">Tailwind CSS</button>
+        <button class="filter-btn" data-filter="react">React</button>
+        <button class="filter-btn" data-filter="javascript">JavaScript</button>
+      </div>
+
+      <!-- Projects grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5" id="projectsGrid">
+
+        <!-- Project 1 — VartexSoft -->
+        <div
+          class="project-card bg-surface border border-[rgba(0,217,255,0.1)] rounded-xl overflow-hidden card-hover relative"
+          data-tags="html tailwindcss javascript">
+          <div class="h-44 border-b border-[rgba(0,217,255,0.1)] relative overflow-hidden">
+            <img src="/images/vertaxSoft.png" alt="VartexSoft preview"
+              class="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105" />
+            <span
+              class="absolute top-3 right-3 text-[15px] font-mono bg-emerald-500/10 text-white font-extrabold border border-emerald-500/30 px-2 py-0.5 rounded-full backdrop-blur-sm">●
+              Live</span>
+          </div>
+          <div class="p-6">
+            <div class="flex gap-2 flex-wrap mb-3">
+              <span class="tech-pill text-[10px]">HTML</span>
+              <span class="tech-pill text-[10px]">Tailwind CSS</span>
+              <span class="tech-pill text-[10px]">JavaScript</span>
+              <span class="tech-pill text-[10px]">EmailJS</span>
+            </div>
+            <h3 class="font-display font-bold text-lg text-[#e8eef5] mb-2">VartexSoft</h3>
+            <p class="text-xs text-[#7a8a9a] leading-relaxed mb-5">A fully responsive client-facing website for a
+              software house, featuring services, portfolio, and a live contact form powered by EmailJS.</p>
+            <div class="flex gap-4">
+              <a href="https://vartexsoft.com/"
+                class="font-mono text-xs text-cyan flex items-center gap-1 hover:opacity-70 transition-opacity"><span><i
+                    class="fa-solid fa-up-right-from-square"></i></span> Live
+                Demo</a>
+              <a href="https://github.com/Sana-Farooq"
+                class="font-mono text-xs text-[#7a8a9a] flex items-center gap-1 hover:opacity-70 transition-opacity"><span><i
+                    class="fa-solid fa-link"></i></span>
+                GitHub</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2 — IlmeQuran Academy -->
+        <div
+          class="project-card bg-surface border border-[rgba(0,217,255,0.1)] rounded-xl overflow-hidden card-hover relative"
+          data-tags="html tailwindcss javascript">
+          <div class="h-44 border-b border-[rgba(0,217,255,0.1)] relative overflow-hidden">
+            <img src="/images/ilmequran.png" alt="IlmeQuran Academy preview"
+              class="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105" />
+            <span
+              class="absolute top-3 right-3 text-[15px] font-mono bg-emerald-500/10  text-white font-extrabold border border-emerald-500/30 px-2 py-0.5 rounded-full backdrop-blur-sm">●
+              Live</span>
+          </div>
+          <div class="p-6">
+            <div class="flex gap-2 flex-wrap mb-3">
+              <span class="tech-pill text-[10px]">HTML</span>
+              <span class="tech-pill text-[10px]">Tailwind CSS</span>
+              <span class="tech-pill text-[10px]">JavaScript</span>
+              <span class="tech-pill text-[10px]">EmailJS</span>
+            </div>
+            <h3 class="font-display font-bold text-lg text-[#e8eef5] mb-2">IlmeQuran Academy</h3>
+            <p class="text-xs text-[#7a8a9a] leading-relaxed mb-5">A responsive client-facing website for an online
+              Quran learning academy with course listings, enrollment forms, and live email integration.</p>
+            <div class="flex gap-4">
+              <a href="https://www.ilmequranacademy.com/"
+                class="font-mono text-xs text-cyan flex items-center gap-1 hover:opacity-70 transition-opacity"><span><i
+                    class="fa-solid fa-up-right-from-square"></i></span> Live
+                Demo</a>
+              <a href="https://github.com/Sana-Farooq"
+                class="font-mono text-xs text-[#7a8a9a] flex items-center gap-1 hover:opacity-70 transition-opacity"><span><i
+                    class="fa-solid fa-link"></i></span>
+                GitHub</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3 — Travel Sphere -->
+        <div
+          class="project-card bg-surface border border-[rgba(0,217,255,0.1)] rounded-xl overflow-hidden card-hover relative"
+          data-tags="html tailwindcss javascript">
+          <div class="h-44 border-b border-[rgba(0,217,255,0.1)] relative overflow-hidden">
+            <img src="/images/travel-website.png" alt="Travel Sphere preview"
+              class="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105" />
+            <span
+              class="absolute top-3 right-3 text-[15px] font-mono bg-violet-500/10 text-black font-extrabold border border-violet-500/30 px-2 py-0.5 rounded-full backdrop-blur-sm">▲
+              Vercel</span>
+          </div>
+          <div class="p-6">
+            <div class="flex gap-2 flex-wrap mb-3">
+              <span class="tech-pill text-[10px]">HTML</span>
+              <span class="tech-pill text-[10px]">Tailwind CSS</span>
+              <span class="tech-pill text-[10px]">JavaScript</span>
+            </div>
+            <h3 class="font-display font-bold text-lg text-[#e8eef5] mb-2">Travel Sphere</h3>
+            <p class="text-xs text-[#7a8a9a] leading-relaxed mb-12">A modern, fully responsive travel website showcasing
+              destinations, tour packages, and travel guides with smooth UI interactions.</p>
+            <div class="flex gap-4">
+              <a href="https://travel-sphere-nine-mu.vercel.app/"
+                class="font-mono text-xs text-cyan flex items-center gap-1 hover:opacity-70 transition-opacity"><span><i
+                    class="fa-solid fa-up-right-from-square"></i></span> Live
+                Demo</a>
+              <a href="https://github.com/Sana-Farooq"
+                class="font-mono text-xs text-[#7a8a9a] flex items-center gap-1 hover:opacity-70 transition-opacity"><span><i
+                    class="fa-solid fa-link"></i></span>
+                GitHub</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 4 — Psychologist Website -->
+        <div
+          class="project-card bg-surface border border-[rgba(0,217,255,0.1)] rounded-xl overflow-hidden card-hover relative"
+          data-tags="html tailwindcss javascript">
+          <div class="h-44 border-b border-[rgba(0,217,255,0.1)] relative overflow-hidden">
+            <img src="/images/psycology-website.png" alt="Psychologist Website preview"
+              class="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105" />
+            <span
+              class="absolute top-3 right-3 text-[15px] font-mono bg-violet-500/10 text-black font-extrabold border border-violet-500/30 px-2 py-0.5 rounded-full backdrop-blur-sm">▲
+              Vercel</span>
+          </div>
+          <div class="p-6">
+            <div class="flex gap-2 flex-wrap mb-3">
+              <span class="tech-pill text-[10px]">HTML</span>
+              <span class="tech-pill text-[10px]">Tailwind CSS</span>
+              <span class="tech-pill text-[10px]">JavaScript</span>
+            </div>
+            <h3 class="font-display font-bold text-lg text-[#e8eef5] mb-2">Psychologist Website</h3>
+            <p class="text-xs text-[#7a8a9a] leading-relaxed mb-5">A calming, responsive personal website for a
+              psychologist featuring services, session booking info, testimonials, and a contact section.</p>
+            <div class="flex gap-4">
+              <a href="https://psychologist-website-sigma.vercel.app/"
+                class="font-mono text-xs text-cyan flex items-center gap-1 hover:opacity-70 transition-opacity"><span><i
+                    class="fa-solid fa-up-right-from-square"></i></span> Live
+                Demo</a>
+              <a href="https://github.com/Sana-Farooq"
+                class="font-mono text-xs text-[#7a8a9a] flex items-center gap-1 hover:opacity-70 transition-opacity"><span><i
+                    class="fa-solid fa-link"></i></span>
+                GitHub</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 5 — NewsOrbit -->
+        <div
+          class="project-card bg-surface border border-[rgba(0,217,255,0.1)] rounded-xl overflow-hidden card-hover relative"
+          data-tags="react javascript">
+          <div class="h-44 border-b border-[rgba(0,217,255,0.1)] relative overflow-hidden">
+            <img src="./images/newsOrbit.png" alt="NewsOrbit preview"
+              class="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105" />
+            <span
+              class="absolute top-3 right-3 text-[15px] font-mono bg-violet-500/10 text-black font-extrabold border border-violet-500/30 px-2 py-0.5 rounded-full backdrop-blur-sm">▲
+              Vercel</span>
+          </div>
+          <div class="p-6">
+            <div class="flex gap-2 flex-wrap mb-3">
+              <span class="tech-pill text-[10px]">React</span>
+              <span class="tech-pill text-[10px]">JavaScript</span>
+              <span class="tech-pill text-[10px]">GNews API</span>
+            </div>
+            <h3 class="font-display font-bold text-lg text-[#e8eef5] mb-2">NewsOrbit</h3>
+            <p class="text-xs text-[#7a8a9a] leading-relaxed mb-5">Orbit around global headlines with NewsOrbit — a
+              React-powered news app fetching live articles across categories via the GNews API.</p>
+            <div class="flex gap-4">
+              <a href="https://news-orbit.vercel.app/"
+                class="font-mono text-xs text-cyan flex items-center gap-1 hover:opacity-70 transition-opacity"><span><i
+                    class="fa-solid fa-up-right-from-square"></i></span> Live
+                Demo</a>
+              <a href="https://github.com/Sana-Farooq"
+                class="font-mono text-xs text-[#7a8a9a] flex items-center gap-1 hover:opacity-70 transition-opacity"><span><i
+                    class="fa-solid fa-link"></i></span>
+                GitHub</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 6 — TextUtils -->
+        <div
+          class="project-card bg-surface border border-[rgba(0,217,255,0.1)] rounded-xl overflow-hidden card-hover relative"
+          data-tags="react javascript">
+          <div class="h-44 border-b border-[rgba(0,217,255,0.1)] relative overflow-hidden">
+            <img src="/images/textUtils.png" alt="TextUtils preview"
+              class="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105" />
+            <span
+              class="absolute top-3 right-3 text-[15px] font-mono bg-violet-500/10 text-black font-extrabold border-violet-500/30 px-2 py-0.5 rounded-full backdrop-blur-sm">▲
+              Vercel</span>
+          </div>
+          <div class="p-6">
+            <div class="flex gap-2 flex-wrap mb-3">
+              <span class="tech-pill text-[10px]">React</span>
+              <span class="tech-pill text-[10px]">JavaScript</span>
+            </div>
+            <h3 class="font-display font-bold text-lg text-[#e8eef5] mb-2">TextUtils</h3>
+            <p class="text-xs text-[#7a8a9a] leading-relaxed mb-5">A simple yet handy React text utility app — convert
+              case, remove extra spaces, count words & characters, and more in real time.</p>
+            <div class="flex gap-4">
+              <a href="https://textutils-smoky.vercel.app"
+                class="font-mono text-xs text-cyan flex items-center gap-1 hover:opacity-70 transition-opacity"><span><i
+                    class="fa-solid fa-up-right-from-square"></i></span> Live
+                Demo</a>
+              <a href="https://github.com/Sana-Farooq"
+                class="font-mono text-xs text-[#7a8a9a] flex items-center gap-1 hover:opacity-70 transition-opacity"><span><i
+                    class="fa-solid fa-link"></i></span>
+                GitHub</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 7 — To-Do List -->
+        <div
+          class="project-card bg-surface border border-[rgba(0,217,255,0.1)] rounded-xl overflow-hidden card-hover relative"
+          data-tags="react javascript">
+          <div class="h-44 border-b border-[rgba(0,217,255,0.1)] relative overflow-hidden">
+            <img src="/images/todo-site.png" alt="To-Do List preview"
+              class="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105" />
+            <span
+              class="absolute top-3 right-3 text-[15px] font-mono bg-violet-500/10 text-violet-400 border font-extrabold border-violet-500/30 px-2 py-0.5 rounded-full backdrop-blur-sm">▲
+              Vercel</span>
+          </div>
+          <div class="p-6">
+            <div class="flex gap-2 flex-wrap mb-3">
+              <span class="tech-pill text-[10px]">React</span>
+              <span class="tech-pill text-[10px]">JavaScript</span>
+            </div>
+            <h3 class="font-display font-bold text-lg text-[#e8eef5] mb-2">To-Do List</h3>
+            <p class="text-xs text-[#7a8a9a] leading-relaxed mb-5">A clean React to-do application that lets users add,
+              view, and delete daily tasks — built for simplicity and everyday productivity.</p>
+            <div class="flex gap-4">
+              <a href="https://rhombix-technologies-tasks.vercel.app/"
+                class="font-mono text-xs text-cyan flex items-center gap-1 hover:opacity-70 transition-opacity"><span><i
+                    class="fa-solid fa-up-right-from-square"></i></span> Live
+                Demo</a>
+              <a href="https://github.com/Sana-Farooq"
+                class="font-mono text-xs text-[#7a8a9a] flex items-center gap-1 hover:opacity-70 transition-opacity"><span><i
+                    class="fa-solid fa-link"></i></span>
+                GitHub</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 8 — CrowdVentures -->
+        <div
+          class="project-card bg-surface border border-[rgba(0,217,255,0.1)] rounded-xl overflow-hidden card-hover relative"
+          data-tags="html tailwindcss">
+          <div class="h-44 border-b border-[rgba(0,217,255,0.1)] relative overflow-hidden">
+            <img src="images/crowdVenture.png" alt="CrowdVentures preview"
+              class="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105" />
+            <span
+              class="absolute top-3 right-3 text-[15px] font-mono bg-violet-500/10 text-black font-extrabold border border-violet-500/30 px-2 py-0.5 rounded-full backdrop-blur-sm">▲
+              Vercel</span>
+          </div>
+          <div class="p-6">
+            <div class="flex gap-2 flex-wrap mb-3">
+              <span class="tech-pill text-[10px]">HTML</span>
+              <span class="tech-pill text-[10px]">CSS</span>
+            </div>
+            <h3 class="font-display font-bold text-lg text-[#e8eef5] mb-2">CrowdVentures</h3>
+            <p class="text-xs text-[#7a8a9a] leading-relaxed mb-5">A responsive, modern client-facing multi-page website
+              for CrowdVentures — a crowdfunding platform — built with clean HTML & CSS.</p>
+            <div class="flex gap-4">
+              <a href="https://crowdventures.vercel.app/"
+                class="font-mono text-xs text-cyan flex items-center gap-1 hover:opacity-70 transition-opacity"><span><i
+                    class="fa-solid fa-up-right-from-square"></i></span> Live
+                Demo</a>
+              <a href="https://github.com/Sana-Farooq"
+                class="font-mono text-xs text-[#7a8a9a] flex items-center gap-1 hover:opacity-70 transition-opacity"><span><i
+                    class="fa-solid fa-link"></i></span>
+                GitHub</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
     </div>
-
-    <!-- Filter buttons -->
-    <div class="flex gap-2 flex-wrap mb-10" id="filterBar">
-      <button class="filter-btn active" data-filter="all">All</button>
-      <button class="filter-btn" data-filter="html">HTML/CSS</button>
-      <button class="filter-btn" data-filter="tailwindcss">Tailwind CSS</button>
-      <button class="filter-btn" data-filter="react">React</button>
-      <button class="filter-btn" data-filter="javascript">JavaScript</button>
-    </div>
-
-    <!-- Projects grid -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5" id="projectsGrid">
-
-      <!-- Project 1 — VartexSoft -->
-      <div class="project-card bg-surface border border-[rgba(0,217,255,0.1)] rounded-xl overflow-hidden card-hover relative" data-tags="html tailwindcss javascript">
-        <div class="h-44 border-b border-[rgba(0,217,255,0.1)] relative overflow-hidden">
-          <img src="https://your-image-url.com/vartexsoft.png" alt="VartexSoft preview" class="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105" />
-          <span class="absolute top-3 right-3 text-[10px] font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 px-2 py-0.5 rounded-full backdrop-blur-sm">● Live</span>
-        </div>
-        <div class="p-6">
-          <div class="flex gap-2 flex-wrap mb-3">
-            <span class="tech-pill text-[10px]">HTML</span>
-            <span class="tech-pill text-[10px]">Tailwind CSS</span>
-            <span class="tech-pill text-[10px]">JavaScript</span>
-            <span class="tech-pill text-[10px]">EmailJS</span>
-          </div>
-          <h3 class="font-display font-bold text-lg text-[#e8eef5] mb-2">VartexSoft</h3>
-          <p class="text-xs text-[#7a8a9a] leading-relaxed mb-5">A fully responsive client-facing website for a software house, featuring services, portfolio, and a live contact form powered by EmailJS.</p>
-          <div class="flex gap-4">
-            <a href="#" class="font-mono text-xs text-cyan flex items-center gap-1 hover:opacity-70 transition-opacity">↗ Live Demo</a>
-            <a href="#" class="font-mono text-xs text-[#7a8a9a] flex items-center gap-1 hover:opacity-70 transition-opacity">⌥ GitHub</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Project 2 — IlmeQuran Academy -->
-      <div class="project-card bg-surface border border-[rgba(0,217,255,0.1)] rounded-xl overflow-hidden card-hover relative" data-tags="html tailwindcss javascript">
-        <div class="h-44 border-b border-[rgba(0,217,255,0.1)] relative overflow-hidden">
-          <img src="https://your-image-url.com/ilmequran.png" alt="IlmeQuran Academy preview" class="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105" />
-          <span class="absolute top-3 right-3 text-[10px] font-mono bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 px-2 py-0.5 rounded-full backdrop-blur-sm">● Live</span>
-        </div>
-        <div class="p-6">
-          <div class="flex gap-2 flex-wrap mb-3">
-            <span class="tech-pill text-[10px]">HTML</span>
-            <span class="tech-pill text-[10px]">Tailwind CSS</span>
-            <span class="tech-pill text-[10px]">JavaScript</span>
-            <span class="tech-pill text-[10px]">EmailJS</span>
-          </div>
-          <h3 class="font-display font-bold text-lg text-[#e8eef5] mb-2">IlmeQuran Academy</h3>
-          <p class="text-xs text-[#7a8a9a] leading-relaxed mb-5">A responsive client-facing website for an online Quran learning academy with course listings, enrollment forms, and live email integration.</p>
-          <div class="flex gap-4">
-            <a href="#" class="font-mono text-xs text-cyan flex items-center gap-1 hover:opacity-70 transition-opacity">↗ Live Demo</a>
-            <a href="#" class="font-mono text-xs text-[#7a8a9a] flex items-center gap-1 hover:opacity-70 transition-opacity">⌥ GitHub</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Project 3 — Travel Sphere -->
-      <div class="project-card bg-surface border border-[rgba(0,217,255,0.1)] rounded-xl overflow-hidden card-hover relative" data-tags="html tailwindcss javascript">
-        <div class="h-44 border-b border-[rgba(0,217,255,0.1)] relative overflow-hidden">
-          <img src="https://your-image-url.com/travelsphere.png" alt="Travel Sphere preview" class="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105" />
-          <span class="absolute top-3 right-3 text-[10px] font-mono bg-violet-500/10 text-violet-400 border border-violet-500/30 px-2 py-0.5 rounded-full backdrop-blur-sm">▲ Vercel</span>
-        </div>
-        <div class="p-6">
-          <div class="flex gap-2 flex-wrap mb-3">
-            <span class="tech-pill text-[10px]">HTML</span>
-            <span class="tech-pill text-[10px]">Tailwind CSS</span>
-            <span class="tech-pill text-[10px]">JavaScript</span>
-          </div>
-          <h3 class="font-display font-bold text-lg text-[#e8eef5] mb-2">Travel Sphere</h3>
-          <p class="text-xs text-[#7a8a9a] leading-relaxed mb-5">A modern, fully responsive travel website showcasing destinations, tour packages, and travel guides with smooth UI interactions.</p>
-          <div class="flex gap-4">
-            <a href="#" class="font-mono text-xs text-cyan flex items-center gap-1 hover:opacity-70 transition-opacity">↗ Live Demo</a>
-            <a href="#" class="font-mono text-xs text-[#7a8a9a] flex items-center gap-1 hover:opacity-70 transition-opacity">⌥ GitHub</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Project 4 — Psychologist Website -->
-      <div class="project-card bg-surface border border-[rgba(0,217,255,0.1)] rounded-xl overflow-hidden card-hover relative" data-tags="html tailwindcss javascript">
-        <div class="h-44 border-b border-[rgba(0,217,255,0.1)] relative overflow-hidden">
-          <img src="https://your-image-url.com/psychologist.png" alt="Psychologist Website preview" class="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105" />
-          <span class="absolute top-3 right-3 text-[10px] font-mono bg-violet-500/10 text-violet-400 border border-violet-500/30 px-2 py-0.5 rounded-full backdrop-blur-sm">▲ Vercel</span>
-        </div>
-        <div class="p-6">
-          <div class="flex gap-2 flex-wrap mb-3">
-            <span class="tech-pill text-[10px]">HTML</span>
-            <span class="tech-pill text-[10px]">Tailwind CSS</span>
-            <span class="tech-pill text-[10px]">JavaScript</span>
-          </div>
-          <h3 class="font-display font-bold text-lg text-[#e8eef5] mb-2">Psychologist Website</h3>
-          <p class="text-xs text-[#7a8a9a] leading-relaxed mb-5">A calming, responsive personal website for a psychologist featuring services, session booking info, testimonials, and a contact section.</p>
-          <div class="flex gap-4">
-            <a href="#" class="font-mono text-xs text-cyan flex items-center gap-1 hover:opacity-70 transition-opacity">↗ Live Demo</a>
-            <a href="#" class="font-mono text-xs text-[#7a8a9a] flex items-center gap-1 hover:opacity-70 transition-opacity">⌥ GitHub</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Project 5 — CrowdVentures -->
-      <div class="project-card bg-surface border border-[rgba(0,217,255,0.1)] rounded-xl overflow-hidden card-hover relative" data-tags="html tailwindcss">
-        <div class="h-44 border-b border-[rgba(0,217,255,0.1)] relative overflow-hidden">
-          <img src="https://your-image-url.com/crowdventures.png" alt="CrowdVentures preview" class="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105" />
-          <span class="absolute top-3 right-3 text-[10px] font-mono bg-violet-500/10 text-violet-400 border border-violet-500/30 px-2 py-0.5 rounded-full backdrop-blur-sm">▲ Vercel</span>
-        </div>
-        <div class="p-6">
-          <div class="flex gap-2 flex-wrap mb-3">
-            <span class="tech-pill text-[10px]">HTML</span>
-            <span class="tech-pill text-[10px]">CSS</span>
-          </div>
-          <h3 class="font-display font-bold text-lg text-[#e8eef5] mb-2">CrowdVentures</h3>
-          <p class="text-xs text-[#7a8a9a] leading-relaxed mb-5">A responsive, modern client-facing multi-page website for CrowdVentures — a crowdfunding platform — built with clean HTML & CSS.</p>
-          <div class="flex gap-4">
-            <a href="#" class="font-mono text-xs text-cyan flex items-center gap-1 hover:opacity-70 transition-opacity">↗ Live Demo</a>
-            <a href="#" class="font-mono text-xs text-[#7a8a9a] flex items-center gap-1 hover:opacity-70 transition-opacity">⌥ GitHub</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Project 6 — TextUtils -->
-      <div class="project-card bg-surface border border-[rgba(0,217,255,0.1)] rounded-xl overflow-hidden card-hover relative" data-tags="react javascript">
-        <div class="h-44 border-b border-[rgba(0,217,255,0.1)] relative overflow-hidden">
-          <img src="https://your-image-url.com/textutils.png" alt="TextUtils preview" class="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105" />
-          <span class="absolute top-3 right-3 text-[10px] font-mono bg-violet-500/10 text-violet-400 border border-violet-500/30 px-2 py-0.5 rounded-full backdrop-blur-sm">▲ Vercel</span>
-        </div>
-        <div class="p-6">
-          <div class="flex gap-2 flex-wrap mb-3">
-            <span class="tech-pill text-[10px]">React</span>
-            <span class="tech-pill text-[10px]">JavaScript</span>
-          </div>
-          <h3 class="font-display font-bold text-lg text-[#e8eef5] mb-2">TextUtils</h3>
-          <p class="text-xs text-[#7a8a9a] leading-relaxed mb-5">A simple yet handy React text utility app — convert case, remove extra spaces, count words & characters, and more in real time.</p>
-          <div class="flex gap-4">
-            <a href="#" class="font-mono text-xs text-cyan flex items-center gap-1 hover:opacity-70 transition-opacity">↗ Live Demo</a>
-            <a href="#" class="font-mono text-xs text-[#7a8a9a] flex items-center gap-1 hover:opacity-70 transition-opacity">⌥ GitHub</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Project 7 — To-Do List -->
-      <div class="project-card bg-surface border border-[rgba(0,217,255,0.1)] rounded-xl overflow-hidden card-hover relative" data-tags="react javascript">
-        <div class="h-44 border-b border-[rgba(0,217,255,0.1)] relative overflow-hidden">
-          <img src="https://your-image-url.com/todolist.png" alt="To-Do List preview" class="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105" />
-          <span class="absolute top-3 right-3 text-[10px] font-mono bg-violet-500/10 text-violet-400 border border-violet-500/30 px-2 py-0.5 rounded-full backdrop-blur-sm">▲ Vercel</span>
-        </div>
-        <div class="p-6">
-          <div class="flex gap-2 flex-wrap mb-3">
-            <span class="tech-pill text-[10px]">React</span>
-            <span class="tech-pill text-[10px]">JavaScript</span>
-          </div>
-          <h3 class="font-display font-bold text-lg text-[#e8eef5] mb-2">To-Do List</h3>
-          <p class="text-xs text-[#7a8a9a] leading-relaxed mb-5">A clean React to-do application that lets users add, view, and delete daily tasks — built for simplicity and everyday productivity.</p>
-          <div class="flex gap-4">
-            <a href="#" class="font-mono text-xs text-cyan flex items-center gap-1 hover:opacity-70 transition-opacity">↗ Live Demo</a>
-            <a href="#" class="font-mono text-xs text-[#7a8a9a] flex items-center gap-1 hover:opacity-70 transition-opacity">⌥ GitHub</a>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
+  </section>
 
   <!-- ══════════════ SKILLS ══════════════ -->
   <section section id="skills" class="px-[6vw] py-28 bg-surface border-t border-b border-[rgba(0,217,255,0.08)]">
@@ -651,103 +773,144 @@
   </section>
 
   <!-- ══════════════ SERVICES ══════════════ -->
-<section id="services" class="px-[6vw] py-28">
-  <div class="max-w-6xl mx-auto">
-    <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-14 gap-4">
-      <div>
-        <span class="tag">What I Offer</span>
-        <h2 class="font-display font-bold text-4xl lg:text-5xl tracking-tight">My <span class="text-cyan">Services</span></h2>
+  <section id="services" class="px-[6vw] py-28">
+    <div class="max-w-6xl mx-auto">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-14 gap-4">
+        <div>
+          <span class="tag">What I Offer</span>
+          <h2 class="font-display font-bold text-4xl lg:text-5xl tracking-tight">My <span
+              class="text-cyan">Services</span></h2>
+        </div>
+        <p class="text-[#7a8a9a] text-sm max-w-xs">End-to-end frontend services tailored to your needs.</p>
       </div>
-      <p class="text-[#7a8a9a] text-sm max-w-xs">End-to-end frontend services tailored to your needs.</p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-24">
+
+        <div
+          class="bg-surface border border-[rgba(0,217,255,0.1)] rounded-xl p-7 card-hover top-line relative overflow-hidden">
+          <div
+            class="w-12 h-12 rounded-xl bg-[rgba(0,217,255,0.1)] border border-[rgba(0,217,255,0.2)] flex items-center justify-center text-2xl mb-5">
+            <span><i class="fa-solid fa-desktop"></i></span>
+          </div>
+          <h3 class="font-display font-bold text-lg text-[#e8eef5] mb-3">UI / Frontend Development</h3>
+          <p class="text-[13.5px] text-[#7a8a9a] leading-relaxed">Pixel-perfect, responsive interfaces built with HTML,
+            Tailwind CSS, and JavaScript — fast to load and smooth on any device.</p>
+        </div>
+
+        <div
+          class="bg-surface border border-[rgba(0,217,255,0.1)] rounded-xl p-7 card-hover top-line relative overflow-hidden">
+          <div
+            class="w-12 h-12 rounded-xl bg-[rgba(0,217,255,0.1)] border border-[rgba(0,217,255,0.2)] flex items-center justify-center text-2xl mb-5">
+            <span><i class="fa-brands fa-react"></i></span>
+          </div>
+          <h3 class="font-display font-bold text-lg text-[#e8eef5] mb-3">React Development</h3>
+          <p class="text-[13.5px] text-[#7a8a9a] leading-relaxed">Dynamic, component-driven web apps using React —
+            reusable components, state management, and smooth user experiences.</p>
+        </div>
+
+        <div
+          class="bg-surface border border-[rgba(0,217,255,0.1)] rounded-xl p-7 card-hover top-line relative overflow-hidden">
+          <div
+            class="w-12 h-12 rounded-xl bg-[rgba(0,217,255,0.1)] border border-[rgba(0,217,255,0.2)] flex items-center justify-center text-2xl mb-5">
+            <span><i class="fa-solid fa-palette"></i></span>
+          </div>
+          <h3 class="font-display font-bold text-lg text-[#e8eef5] mb-3">Landing Pages & Websites</h3>
+          <p class="text-[13.5px] text-[#7a8a9a] leading-relaxed">Clean, conversion-focused landing pages and portfolio
+            sites — designed with Tailwind CSS and built for speed.</p>
+        </div>
+
+        <div
+          class="bg-surface border border-[rgba(0,217,255,0.1)] rounded-xl p-7 card-hover top-line relative overflow-hidden">
+          <div
+            class="w-12 h-12 rounded-xl bg-[rgba(0,217,255,0.1)] border border-[rgba(0,217,255,0.2)] flex items-center justify-center text-2xl mb-5">
+            <span><i class="fa-solid fa-screwdriver-wrench"></i></span>
+          </div>
+          <h3 class="font-display font-bold text-lg text-[#e8eef5] mb-3">UI Fixes & Improvements</h3>
+          <p class="text-[13.5px] text-[#7a8a9a] leading-relaxed">Got a broken layout or slow frontend? I'll debug,
+            refactor, and improve your existing site's look, feel, and performance.</p>
+        </div>
+
+        <div
+          class="bg-surface border border-[rgba(0,217,255,0.1)] rounded-xl p-7 card-hover top-line relative overflow-hidden">
+          <div
+            class="w-12 h-12 rounded-xl bg-[rgba(0,217,255,0.1)] border border-[rgba(0,217,255,0.2)] flex items-center justify-center text-2xl mb-5">
+            <span><i class="fa-solid fa-rocket"></i></span>
+          </div>
+          <h3 class="font-display font-bold text-lg text-[#e8eef5] mb-3">Frontend to Fullstack</h3>
+          <p class="text-[13.5px] text-[#7a8a9a] leading-relaxed">Expanding into PHP, Laravel & SQL — I can connect your
+            frontend to a backend, build simple APIs, and manage databases for small projects.</p>
+        </div>
+
+        <div
+          class="bg-surface border border-[rgba(0,217,255,0.1)] rounded-xl p-7 card-hover top-line relative overflow-hidden">
+          <div
+            class="w-12 h-12 rounded-xl bg-[rgba(0,217,255,0.1)] border border-[rgba(0,217,255,0.2)] flex items-center justify-center text-2xl mb-5">
+            <span><i class="fa-solid fa-handshake"></i></span>
+          </div>
+          <h3 class="font-display font-bold text-lg text-[#e8eef5] mb-3">Freelance Collaboration</h3>
+          <p class="text-[13.5px] text-[#7a8a9a] leading-relaxed">Need a reliable frontend dev for your project? Open to
+            freelance work, short-term contracts, and long-term collaborations.</p>
+        </div>
+
+      </div>
+
+      <!-- Development Process (unchanged) -->
+      <div class="bg-surface border border-[rgba(0,217,255,0.08)] rounded-2xl p-10">
+        <h3 class="font-display font-bold text-2xl text-center text-[#e8eef5] mb-12">My Development Process</h3>
+        <div class="relative grid grid-cols-5 gap-0">
+          <div class="process-line"></div>
+          <div class="flex flex-col items-center text-center px-3 relative z-10">
+            <div
+              class="w-13 h-13 rounded-full bg-card border border-[rgba(0,217,255,0.3)] flex items-center justify-center font-mono text-sm text-cyan mb-4">
+              01</div>
+            <p class="font-display font-semibold text-[13px] text-[#e8eef5] mb-1.5">Discovery</p>
+            <p class="text-[11px] text-[#7a8a9a] leading-relaxed">Goals, scope &amp; requirements</p>
+          </div>
+          <div class="flex flex-col items-center text-center px-3 relative z-10">
+            <div
+              class="w-13 h-13 rounded-full bg-card border border-[rgba(0,217,255,0.3)] flex items-center justify-center font-mono text-sm text-cyan mb-4">
+              02</div>
+            <p class="font-display font-semibold text-[13px] text-[#e8eef5] mb-1.5">Design</p>
+            <p class="text-[11px] text-[#7a8a9a] leading-relaxed">Wireframes &amp; architecture</p>
+          </div>
+          <div class="flex flex-col items-center text-center px-3 relative z-10">
+            <div
+              class="w-13 h-13 rounded-full bg-[rgba(0,217,255,0.12)] border border-cyan flex items-center justify-center font-mono text-sm text-cyan mb-4">
+              03</div>
+            <p class="font-display font-semibold text-[13px] text-cyan mb-1.5">Build</p>
+            <p class="text-[11px] text-[#7a8a9a] leading-relaxed">Agile sprints &amp; reviews</p>
+          </div>
+          <div class="flex flex-col items-center text-center px-3 relative z-10">
+            <div
+              class="w-13 h-13 rounded-full bg-card border border-[rgba(0,217,255,0.3)] flex items-center justify-center font-mono text-sm text-cyan mb-4">
+              04</div>
+            <p class="font-display font-semibold text-[13px] text-[#e8eef5] mb-1.5">Test</p>
+            <p class="text-[11px] text-[#7a8a9a] leading-relaxed">QA, performance &amp; security</p>
+          </div>
+          <div class="flex flex-col items-center text-center px-3 relative z-10">
+            <div
+              class="w-13 h-13 rounded-full bg-card border border-[rgba(0,217,255,0.3)] flex items-center justify-center font-mono text-sm text-cyan mb-4">
+              05</div>
+            <p class="font-display font-semibold text-[13px] text-[#e8eef5] mb-1.5">Launch</p>
+            <p class="text-[11px] text-[#7a8a9a] leading-relaxed">Deploy &amp; ongoing support</p>
+          </div>
+        </div>
+      </div>
     </div>
-
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-24">
-
-      <div class="bg-surface border border-[rgba(0,217,255,0.1)] rounded-xl p-7 card-hover top-line relative overflow-hidden">
-        <div class="w-12 h-12 rounded-xl bg-[rgba(0,217,255,0.1)] border border-[rgba(0,217,255,0.2)] flex items-center justify-center text-2xl mb-5">🖥️</div>
-        <h3 class="font-display font-bold text-lg text-[#e8eef5] mb-3">UI / Frontend Development</h3>
-        <p class="text-[13.5px] text-[#7a8a9a] leading-relaxed">Pixel-perfect, responsive interfaces built with HTML, Tailwind CSS, and JavaScript — fast to load and smooth on any device.</p>
-      </div>
-
-      <div class="bg-surface border border-[rgba(0,217,255,0.1)] rounded-xl p-7 card-hover top-line relative overflow-hidden">
-        <div class="w-12 h-12 rounded-xl bg-[rgba(0,217,255,0.1)] border border-[rgba(0,217,255,0.2)] flex items-center justify-center text-2xl mb-5">⚛️</div>
-        <h3 class="font-display font-bold text-lg text-[#e8eef5] mb-3">React Development</h3>
-        <p class="text-[13.5px] text-[#7a8a9a] leading-relaxed">Dynamic, component-driven web apps using React — reusable components, state management, and smooth user experiences.</p>
-      </div>
-
-      <div class="bg-surface border border-[rgba(0,217,255,0.1)] rounded-xl p-7 card-hover top-line relative overflow-hidden">
-        <div class="w-12 h-12 rounded-xl bg-[rgba(0,217,255,0.1)] border border-[rgba(0,217,255,0.2)] flex items-center justify-center text-2xl mb-5">🎨</div>
-        <h3 class="font-display font-bold text-lg text-[#e8eef5] mb-3">Landing Pages & Websites</h3>
-        <p class="text-[13.5px] text-[#7a8a9a] leading-relaxed">Clean, conversion-focused landing pages and portfolio sites — designed with Tailwind CSS and built for speed.</p>
-      </div>
-
-      <div class="bg-surface border border-[rgba(0,217,255,0.1)] rounded-xl p-7 card-hover top-line relative overflow-hidden">
-        <div class="w-12 h-12 rounded-xl bg-[rgba(0,217,255,0.1)] border border-[rgba(0,217,255,0.2)] flex items-center justify-center text-2xl mb-5">🔧</div>
-        <h3 class="font-display font-bold text-lg text-[#e8eef5] mb-3">UI Fixes & Improvements</h3>
-        <p class="text-[13.5px] text-[#7a8a9a] leading-relaxed">Got a broken layout or slow frontend? I'll debug, refactor, and improve your existing site's look, feel, and performance.</p>
-      </div>
-
-      <div class="bg-surface border border-[rgba(0,217,255,0.1)] rounded-xl p-7 card-hover top-line relative overflow-hidden">
-        <div class="w-12 h-12 rounded-xl bg-[rgba(0,217,255,0.1)] border border-[rgba(0,217,255,0.2)] flex items-center justify-center text-2xl mb-5">🚀</div>
-        <h3 class="font-display font-bold text-lg text-[#e8eef5] mb-3">Frontend to Fullstack</h3>
-        <p class="text-[13.5px] text-[#7a8a9a] leading-relaxed">Expanding into PHP, Laravel & SQL — I can connect your frontend to a backend, build simple APIs, and manage databases for small projects.</p>
-      </div>
-
-      <div class="bg-surface border border-[rgba(0,217,255,0.1)] rounded-xl p-7 card-hover top-line relative overflow-hidden">
-        <div class="w-12 h-12 rounded-xl bg-[rgba(0,217,255,0.1)] border border-[rgba(0,217,255,0.2)] flex items-center justify-center text-2xl mb-5">🤝</div>
-        <h3 class="font-display font-bold text-lg text-[#e8eef5] mb-3">Freelance Collaboration</h3>
-        <p class="text-[13.5px] text-[#7a8a9a] leading-relaxed">Need a reliable frontend dev for your project? Open to freelance work, short-term contracts, and long-term collaborations.</p>
-      </div>
-
-    </div>
-
-    <!-- Development Process (unchanged) -->
-    <div class="bg-surface border border-[rgba(0,217,255,0.08)] rounded-2xl p-10">
-      <h3 class="font-display font-bold text-2xl text-center text-[#e8eef5] mb-12">My Development Process</h3>
-      <div class="relative grid grid-cols-5 gap-0">
-        <div class="process-line"></div>
-        <div class="flex flex-col items-center text-center px-3 relative z-10">
-          <div class="w-13 h-13 rounded-full bg-card border border-[rgba(0,217,255,0.3)] flex items-center justify-center font-mono text-sm text-cyan mb-4">01</div>
-          <p class="font-display font-semibold text-[13px] text-[#e8eef5] mb-1.5">Discovery</p>
-          <p class="text-[11px] text-[#7a8a9a] leading-relaxed">Goals, scope &amp; requirements</p>
-        </div>
-        <div class="flex flex-col items-center text-center px-3 relative z-10">
-          <div class="w-13 h-13 rounded-full bg-card border border-[rgba(0,217,255,0.3)] flex items-center justify-center font-mono text-sm text-cyan mb-4">02</div>
-          <p class="font-display font-semibold text-[13px] text-[#e8eef5] mb-1.5">Design</p>
-          <p class="text-[11px] text-[#7a8a9a] leading-relaxed">Wireframes &amp; architecture</p>
-        </div>
-        <div class="flex flex-col items-center text-center px-3 relative z-10">
-          <div class="w-13 h-13 rounded-full bg-[rgba(0,217,255,0.12)] border border-cyan flex items-center justify-center font-mono text-sm text-cyan mb-4">03</div>
-          <p class="font-display font-semibold text-[13px] text-cyan mb-1.5">Build</p>
-          <p class="text-[11px] text-[#7a8a9a] leading-relaxed">Agile sprints &amp; reviews</p>
-        </div>
-        <div class="flex flex-col items-center text-center px-3 relative z-10">
-          <div class="w-13 h-13 rounded-full bg-card border border-[rgba(0,217,255,0.3)] flex items-center justify-center font-mono text-sm text-cyan mb-4">04</div>
-          <p class="font-display font-semibold text-[13px] text-[#e8eef5] mb-1.5">Test</p>
-          <p class="text-[11px] text-[#7a8a9a] leading-relaxed">QA, performance &amp; security</p>
-        </div>
-        <div class="flex flex-col items-center text-center px-3 relative z-10">
-          <div class="w-13 h-13 rounded-full bg-card border border-[rgba(0,217,255,0.3)] flex items-center justify-center font-mono text-sm text-cyan mb-4">05</div>
-          <p class="font-display font-semibold text-[13px] text-[#e8eef5] mb-1.5">Launch</p>
-          <p class="text-[11px] text-[#7a8a9a] leading-relaxed">Deploy &amp; ongoing support</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+  </section>
 
   <!-- ══════════════ CTA BAND ══════════════ -->
   <div
     class="relative py-20 px-[6vw] text-center bg-surface border-t border-b border-[rgba(0,217,255,0.08)] overflow-hidden">
-    <div
-      class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-150 h-75 rounded-full pointer-events-none"
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-150 h-75 rounded-full pointer-events-none"
       style="background:radial-gradient(ellipse,rgba(0,217,255,0.08) 0%,transparent 70%)"></div>
     <p class="font-mono text-xs text-cyan tracking-widest uppercase mb-4 relative">Open to opportunities</p>
     <h2 class="font-display font-extrabold text-4xl lg:text-6xl tracking-tight mb-5 relative">Got a <span
         class="text-cyan">project</span> in mind?</h2>
-    <p class="text-[#7a8a9a] text-base mb-10 relative">Let's turn your idea into a polished, production-ready product.
+    <p class="text-white mb-10 relative">Let's turn your idea into a polished, production-ready product.
     </p>
-    <a href="#contact" class="btn-primary relative mx-auto">Start a Conversation →</a>
+    <a href="#contact" class="btn-primary relative mx-auto">Start a Conversation <span><i
+          class="fa-solid fa-arrow-right"></i></span> </a>
   </div>
 
   <!-- ══════════════ TESTIMONIALS ══════════════ -->
@@ -818,7 +981,7 @@
   </section>
 
   <!-- ══════════════ HAPPY CLIENTS CTA ══════════════ -->
-  <div
+  <!-- <div
     class="px-[6vw] py-16 bg-card border-t border-b border-[rgba(0,217,255,0.08)] flex flex-col lg:flex-row items-center justify-between gap-10">
     <div>
       <h2 class="font-display font-extrabold text-3xl lg:text-5xl tracking-tight leading-tight mb-2">
@@ -844,7 +1007,7 @@
         <p class="font-mono text-xs text-[#7a8a9a] mt-1 uppercase tracking-wide">Satisfaction</p>
       </div>
     </div>
-  </div>
+  </div> -->
 
   <!-- ══════════════ CONTACT ══════════════ -->
   <section id="contact" class="px-[6vw] py-28">
@@ -861,16 +1024,20 @@
           <div class="flex items-start gap-4">
             <div
               class="w-11 h-11 rounded-xl bg-[rgba(0,217,255,0.08)] border border-[rgba(0,217,255,0.2)] flex items-center justify-center text-lg shrink-0 mt-1">
-              📧</div>
+              <i class="fa-solid fa-envelope"></i>
+            </div>
             <div>
               <p class="font-mono text-xs text-[#7a8a9a] uppercase tracking-widest mb-1">Email</p>
-              <p class="text-[15px] text-[#e8eef5] font-medium">sana</p>
+              <a href="https://mail.google.com/mail/?view=cm&fs=1&to=sanafarooqq909@gmail.com" target="_blank">
+                sanafarooqq909@gmail.com
+              </a>
             </div>
           </div>
           <div class="flex items-start gap-4">
             <div
               class="w-11 h-11 rounded-xl bg-[rgba(0,217,255,0.08)] border border-[rgba(0,217,255,0.2)] flex items-center justify-center text-lg shrink-0 mt-1">
-              📍</div>
+              <i class="fa-solid fa-location-dot"></i>
+            </div>
             <div>
               <p class="font-mono text-xs text-[#7a8a9a] uppercase tracking-widest mb-1">Location</p>
               <p class="text-[15px] text-[#e8eef5] font-medium">Bahawalpur, Pakistan (Remote OK)</p>
@@ -879,7 +1046,8 @@
           <div class="flex items-start gap-4">
             <div
               class="w-11 h-11 rounded-xl bg-[rgba(0,217,255,0.08)] border border-[rgba(0,217,255,0.2)] flex items-center justify-center text-lg shrink-0 mt-1">
-              ⏰</div>
+              <i class="fa-solid fa-alarm-clock"></i>
+            </div>
             <div>
               <p class="font-mono text-xs text-[#7a8a9a] uppercase tracking-widest mb-1">Availability</p>
               <p class="text-[15px] text-[#e8eef5] font-medium">Open to freelance &amp; contracts</p>
@@ -889,54 +1057,59 @@
           <div>
             <p class="font-mono text-xs text-[#7a8a9a] uppercase tracking-widest mb-4">Find me online</p>
             <div class="flex gap-3 flex-wrap">
-              <a href="#"
-                class="w-11 h-11 border border-[rgba(0,217,255,0.12)] rounded-xl flex items-center justify-center text-lg hover:border-[rgba(0,217,255,0.35)] hover:bg-[rgba(0,217,255,0.08)] hover:-translate-y-1 transition-all">🐙</a>
-              <a href="#"
-                class="w-11 h-11 border border-[rgba(0,217,255,0.12)] rounded-xl flex items-center justify-center text-lg hover:border-[rgba(0,217,255,0.35)] hover:bg-[rgba(0,217,255,0.08)] hover:-translate-y-1 transition-all">💼</a>
-              <a href="#"
-                class="w-11 h-11 border border-[rgba(0,217,255,0.12)] rounded-xl flex items-center justify-center text-lg hover:border-[rgba(0,217,255,0.35)] hover:bg-[rgba(0,217,255,0.08)] hover:-translate-y-1 transition-all">🐦</a>
-              <a href="#"
-                class="w-11 h-11 border border-[rgba(0,217,255,0.12)] rounded-xl flex items-center justify-center text-lg hover:border-[rgba(0,217,255,0.35)] hover:bg-[rgba(0,217,255,0.08)] hover:-translate-y-1 transition-all">📝</a>
+              <a href="https://www.linkedin.com/in/sana-farooq-353995369"
+                class="w-11 h-11 border border-[rgba(0,217,255,0.12)] rounded-xl flex items-center justify-center text-lg hover:border-[rgba(0,217,255,0.35)] hover:bg-[rgba(0,217,255,0.08)] hover:-translate-y-1 transition-all"><i
+                  class="fa-brands fa-linkedin-in"></i></a>
+              <a href="https://github.com/Sana-Farooq"
+                class="w-11 h-11 border border-[rgba(0,217,255,0.12)] rounded-xl flex items-center justify-center text-lg hover:border-[rgba(0,217,255,0.35)] hover:bg-[rgba(0,217,255,0.08)] hover:-translate-y-1 transition-all"><i
+                  class="fa-brands fa-github"></i></a>
+              <a href="https://mail.google.com/mail/?view=cm&fs=1&to=sanafarooqq909@gmail.com" target="_blank"
+                class="w-11 h-11 border border-[rgba(0,217,255,0.12)] rounded-xl flex items-center justify-center text-lg hover:border-[rgba(0,217,255,0.35)] hover:bg-[rgba(0,217,255,0.08)] hover:-translate-y-1 transition-all"><i
+                  class="fa-solid fa-at"></i></a>
             </div>
           </div>
         </div>
 
         <!-- Form -->
         <div class="lg:col-span-3 bg-surface border border-[rgba(0,217,255,0.1)] rounded-2xl p-8">
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
-            <div>
-              <label class="font-mono text-xs text-[#7a8a9a] uppercase tracking-widest mb-2 block">Your Name</label>
-              <input type="text" placeholder="Sana" />
+          <form id="contact-form">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-5">
+              <div>
+                <label class="font-mono text-xs text-[#7a8a9a] uppercase tracking-widest mb-2 block">Your Name</label>
+                <input name="user_name" type="text" placeholder="Sana" />
+              </div>
+              <div>
+                <label class="font-mono text-xs text-[#7a8a9a] uppercase tracking-widest mb-2 block">Email
+                  Address</label>
+                <input name="user_email" type="email" placeholder="sana@example.com" />
+              </div>
             </div>
-            <div>
-              <label class="font-mono text-xs text-[#7a8a9a] uppercase tracking-widest mb-2 block">Email Address</label>
-              <input type="email" placeholder="sana@example.com" />
+            <div class="mb-5">
+              <label class="font-mono text-xs text-[#7a8a9a] uppercase tracking-widest mb-2 block">Subject</label>
+              <input name="subject" type="text" placeholder="Project Inquiry" />
             </div>
-          </div>
-          <div class="mb-5">
-            <label class="font-mono text-xs text-[#7a8a9a] uppercase tracking-widest mb-2 block">Subject</label>
-            <input type="text" placeholder="Project Inquiry" />
-          </div>
-          <div class="mb-7">
-            <label class="font-mono text-xs text-[#7a8a9a] uppercase tracking-widest mb-2 block">Message</label>
-            <textarea rows="5" placeholder="Tell me about your project..."></textarea>
-          </div>
-          <button class="btn-primary w-full justify-center text-sm"
-            onclick="this.textContent='Message Sent ✓'; this.style.background='#0a6375'; setTimeout(()=>{ this.textContent='Send Message →'; this.style.background=''; },3000)">
-            Send Message →
-          </button>
+            <div class="mb-7">
+              <label class="font-mono text-xs text-[#7a8a9a] uppercase tracking-widest mb-2 block">Message</label>
+              <textarea name="message" class="p-3" rows="3" placeholder="Tell me about your project..."></textarea>
+            </div>
+            <button  id="submit-btn" class="btn-primary w-full justify-center text-sm " type="submit">
+              Send Message <span><i class="fa-solid fa-arrow-right"></i></span>
+            </button>
+
+          </form>
         </div>
       </div>
-    </div>
   </section>
 
   <!-- ══════════════ FOOTER ══════════════ -->
   <footer
     class="px-[6vw] py-10 border-t border-[rgba(0,217,255,0.08)] flex flex-col sm:flex-row items-center justify-between gap-4">
-    <a href="#hero" class="font-display font-extrabold text-xl text-cyan tracking-tight">SF.</a>
+    <a href="#hero"><img class="h-full h-max-10 w-auto" src="/images/logo.svg" alt="SF."></a>
     <p class="font-mono text-xs text-[#3a4a5a] text-center">© 2026 Sana Farooq — Built with js &amp; Tailwind CSS
     </p>
-    <a href="#hero" class="font-mono text-xs text-[#7a8a9a] hover:text-cyan transition-colors">↑ back to top</a>
+    <a href="#hero" class="font-mono text-xs text-[#7a8a9a] hover:text-cyan transition-colors"> <span><i
+          class="fa-solid fa-arrow-up"></i></span>
+      back to top</a>
   </footer>
 
   <script>
@@ -1012,6 +1185,51 @@
 
     // start after a short delay
     setTimeout(type, 600);
+
+    emailjs.init("EE2PYPl6f7xDrnhCe");
+
+    const form = document.getElementById("contact-form");
+    const btn = document.getElementById("submit-btn");
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      // 🔄 Loading state
+      btn.textContent = "Sending...";
+      btn.disabled = true;
+
+      emailjs.sendForm(
+        "service_hsv341w",
+        "template_yivm0bq",
+        this
+      )
+        .then(() => {
+          // ✅ Success state
+          btn.textContent = "Message Sent ✓";
+          btn.style.background = "#0a6375";
+
+          form.reset();
+
+          setTimeout(() => {
+            btn.textContent = "Send Message →";
+            btn.style.background = "";
+            btn.disabled = false;
+          }, 3000);
+        })
+        .catch((error) => {
+          console.error("FAILED...", error);
+
+          // ❌ Error state
+          btn.textContent = "Failed! Try Again";
+          btn.style.background = "red";
+
+          setTimeout(() => {
+            btn.textContent = "Send Message →";
+            btn.style.background = "";
+            btn.disabled = false;
+          }, 3000);
+        });
+    });
   </script>
 </body>
 
